@@ -1,22 +1,21 @@
-
 <style>
-    .transparent-text {
-      background-color: transparent;
-      color: transparent;
-      
-    }
-  </style>
-  </head>
-  <body>
-    <p class="transparent-text">&copy; 2023 ShowLowfinity Harvester - All rights reserved.</p>
-  </body>
+  .transparent-text {
+    background-color: transparent;
+    color: transparent;
+    
+  }
+</style>
+</head>
+<body>
+  <p class="transparent-text">&copy; 2023 ShowLowfinity Harvester - All rights reserved.</p>
+</body>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WSLF RADIO</title>
+  <title>WSLF Radio</title>
   <style>
     body {
       margin: 0;
@@ -24,7 +23,6 @@
       background-image: url('Logo.jpg'); 
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
       font-family: Arial, sans-serif;
     }
 
@@ -41,18 +39,15 @@
 <body>
   <div id="player-container">
     <audio id="player" controls>
-      <source src="http://wahceoc.us.to:8000/NON-PROG/WSLF" type="audio/mpeg">
-      Your browser does not support the audio element.
     </audio>
   </div>
 
   <script>
     const audioStreamUrl = "http://wahceoc.us.to:8000/NON-PROG/WSLF";
+
     const audioPlayer = document.getElementById("player");
-
     audioPlayer.src = audioStreamUrl;
-
-    audioPlayer.play();
+    audioPlayer.load();
   </script>
 </body>
 </html>
