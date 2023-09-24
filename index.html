@@ -1,3 +1,15 @@
+<style>
+  .transparent-text {
+    background-color: transparent;
+    color: transparent;
+    
+  }
+</style>
+</head>
+<body>
+  <p class="transparent-text">&copy; 2023 ShowLowfinity Harvester - All rights reserved.</p>
+</body>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,27 +41,16 @@
     <audio id="player" controls>
       Your browser does not support the audio element.
     </audio>
-    <button id="play-button">Play</button> <!-- Add a Play button -->
   </div>
 
   <script>
     const m3uPlaylistUrl = "WSLF.m3u"; 
+
     const audioPlayer = document.getElementById("player");
-    const playButton = document.getElementById("play-button"); // Get the Play button
 
     audioPlayer.onerror = function() {
       console.error("Error loading the audio stream:", audioPlayer.error.message);
     };
-
-    playButton.addEventListener("click", function() {
-      // Play the audio when the user clicks the Play button
-      audioPlayer.play().catch(error => {
-        console.error("Error playing the audio:", error);
-      });
-
-      // Disable the Play button after clicking to prevent multiple starts
-      playButton.disabled = true;
-    });
 
     fetch(m3uPlaylistUrl, { mode: 'cors' })
       .then(response => response.text())
@@ -58,6 +59,7 @@
         if (streamUrls.length > 0) {
           audioPlayer.src = streamUrls[0]; 
           audioPlayer.load();
+          audioPlayer.play(); 
         } else {
           console.error("No valid stream URLs found in the M3U playlist.");
         }
