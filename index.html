@@ -1,15 +1,3 @@
-<style>
-  .transparent-text {
-    background-color: transparent;
-    color: transparent;
-    
-  }
-</style>
-</head>
-<body>
-  <p class="transparent-text">&copy; 2023 ShowLowfinity Harvester - All rights reserved.</p>
-</body>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,6 +22,11 @@
     #player {
       width: 300px;
     }
+
+    .transparent-text {
+      background-color: transparent;
+      color: transparent;
+    }
   </style>
 </head>
 <body>
@@ -55,6 +48,7 @@
     fetch(m3uPlaylistUrl, { mode: 'cors' })
       .then(response => response.text())
       .then(data => {
+        console.log("M3U Playlist Data:", data); // Add this for debugging
         const streamUrls = data.split("\n").filter(line => line.trim().length > 0 && !line.startsWith("#"));
         if (streamUrls.length > 0) {
           audioPlayer.src = streamUrls[0]; 
