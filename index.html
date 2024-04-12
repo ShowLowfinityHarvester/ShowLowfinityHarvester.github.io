@@ -8,60 +8,48 @@
     body {
       margin: 0;
       padding: 0;
+      background-image: url('Logo.jpg'); 
+      background-size: cover;
+      background-position: center;
       font-family: Arial, sans-serif;
-    }
-
-    /* Style for the menu */
-    .menu-container {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      background-color: #ccc;
-      padding: 10px;
-      border-radius: 5px;
-      z-index: 1000; /* Ensure the menu appears above other elements */
-    }
-
-    .menu-logo {
-      width: 50px;
-      height: 50px;
-      margin-right: 10px;
-    }
-
-    .menu-item {
-      display: block;
-      margin-bottom: 5px;
-      color: #333;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .menu-item:hover {
-      color: #fff;
-      background-color: #666;
-      border-radius: 3px;
     }
 
     #player-container {
       text-align: center;
-      margin-top: 100px;
+      margin-top: 200px;
     }
 
     #player {
       width: 300px;
     }
+
+    .menu-bar {
+      background-color: #ccc;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .menu-bar img {
+      width: 50px;
+      margin-right: 20px;
+    }
+
+    .menu-item {
+      margin-right: 20px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  <!-- Menu -->
-  <div class="menu-container">
-    <img src="Logo.jpg" alt="Logo" class="menu-logo">
-    <a href="about.html" class="menu-item">About</a>
-    <a href="https://showlowfinityharvester.github.io/kec94.github.io/" class="menu-item">⛅ KEC94</a>
-    <a href="https://www.example.com/WWG41" class="menu-item">⛅ WWG41</a>
+  <div class="menu-bar">
+    <img src="your_logo_image_url.jpg" alt="Logo">
+    <div class="menu-item" onclick="window.location.href='about.html'">About</div>
+    <div class="menu-item" onclick="window.location.href='https://showlowfinityharvester.github.io/kec94.github.io/'">⛅ KEC94</div>
+    <div class="menu-item" onclick="window.location.href='https://showlowfinityharvester.github.io/wwg41.github.io/'">⛅ WWG41</div>
   </div>
 
-  <!-- Streaming player -->
   <div id="player-container">
     <audio id="player" controls>
       Your browser does not support the audio element.
