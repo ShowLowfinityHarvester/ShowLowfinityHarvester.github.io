@@ -10,14 +10,20 @@
       margin: 0;
       padding: 0;
       background-image: url('Logo.jpg'); 
-      background-size: cover;
-      background-position: center;
+      background-size: cover;  
+      background-position: center;  
+      background-repeat: no-repeat;  
+      background-attachment: fixed;  
       font-family: Arial, sans-serif;
+      height: 100vh;  
+      display: flex;
+      flex-direction: column;
     }
 
     #player-container {
       text-align: center;
       margin-top: 200px;
+      flex-grow: 1;  
     }
 
     #player {
@@ -30,6 +36,7 @@
       justify-content: flex-start;
       align-items: center;
       padding: 10px;
+      width: 100%;  
     }
 
     .menu-bar img {
