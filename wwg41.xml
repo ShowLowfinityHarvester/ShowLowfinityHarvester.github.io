@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<playlist xmlns="http://xspf.org/ns/0/" version="1">
+  <title/>
+  <creator/>
+  <trackList>
+    <track>
+      <location>https://wxradio.org/AZ-PaysonGilaCountyN-WWG41-alt1</location>
+      <title/>
+      <annotation>Stream Title: WSLF Radio
+Stream Description: This is WSLF Radio, The broadcast coming from the WSLF operations center in phoenix!
+Content Type:audio/mpeg
+Current Listeners: 0
+Peak Listeners: 5
+Stream Genre: All</annotation>
+      <info>(NULL)</info>
+    </track>
+  </trackList>
+</playlist>
