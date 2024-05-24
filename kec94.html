@@ -3,21 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KEC94 - NOAA Weather Radio</title>
+  <title>WSLF Radio - Main</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
     body {
       margin: 0;
       padding: 0;
       background-image: url('Logo.jpg'); 
-      background-size: cover;
-      background-position: center;
+      background-size: cover;  
+      background-position: center;  
+      background-repeat: no-repeat;  
+      background-attachment: fixed;  
       font-family: Arial, sans-serif;
+      height: 100vh;  
+      display: flex;
+      flex-direction: column;
     }
 
     #player-container {
       text-align: center;
       margin-top: 200px;
+      flex-grow: 1;  
     }
 
     #player {
@@ -30,6 +36,7 @@
       justify-content: flex-start;
       align-items: center;
       padding: 10px;
+      width: 100%;  
     }
 
     .menu-bar img {
@@ -46,9 +53,9 @@
 <body>
   <div class="menu-bar">
     <img src="WSLF.png" alt="Logo">
-    <div class="menu-item" onclick="window.location.href='about.html'">About</div>
-    <div class="menu-item" onclick="window.location.href='https://wslfradio.org'">🎵 WSLF</div>
-    <div class="menu-item" onclick="window.location.href='WWG41.html'">⛅ WWG41</div>
+    <div class="menu-item" onclick="window.location.href='about'">About</div>
+    <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org'">🎵 WSLF</div>
+    <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wwg41'">⛅ WWG41</div>
   </div>
 
   <div id="player-container">
