@@ -6,57 +6,84 @@
     <title>ShowLow's NWS Product Puller</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
-            background-color: #f0f0f0;
             margin: 0;
+            background-color: #f0f0f0;
         }
-        .container {
-            text-align: center;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        #menu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .menu-button {
-            display: block;
-            width: 100%;
-            margin: 10px 0;
-            padding: 10px;
+        button {
+            padding: 10px 20px;
+            margin: 10px;
             font-size: 16px;
             cursor: pointer;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
         }
-        .menu-button:hover {
-            background-color: #0056b3;
+        #chat-room {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+        #messages {
+            width: 300px;
+            height: 200px;
+            border: 1px solid #ccc;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            background-color: #fff;
+        }
+        #message-input {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <button id="warningButton" class="menu-button" onclick="changeButtonText()">NWS Products</button>
-    <button class="menu-button" onclick="alert('NWS AFDs functionality not available in this HTML version.')">NWS AFD's</button>
-    <button class="menu-button" onclick="alert('NWS Forecasts functionality not available in this HTML version.')">NWS Forecasts</button>
-    <button class="menu-button" onclick="alert('ShowLowfinity Weather Radio functionality not available in this HTML version.')">ShowLowfinity Weather Radio</button>
-    <button class="menu-button" onclick="alert('Report A Problem functionality not available in this HTML version.')">Send Problem Reports</button>
-    <button class="menu-button" onclick="alert('Chat Room functionality not available in this HTML version.')">Chat Room</button>
-</div>
+    <div id="menu">
+        <button id="nws-products">NWS Products</button>
+        <button id="chat-room-button">Chat Room</button>
+    </div>
 
-<script>
-    function changeButtonText() {
-        var button = document.getElementById("warningButton");
-        button.textContent = "Refresh Feed";
-        alert('NWS Products functionality not available in this HTML version.');
-    }
-</script>
+    <div id="chat-room">
+        <div id="messages"></div>
+        <input type="text" id="message-input" placeholder="Type your message here...">
+        <button id="send-message">Send</button>
+    </div>
+
+    <script>
+        document.getElementById('nws-products').addEventListener('click', function() {
+            this.textContent = 'Refresh Feed';
+            // Add code to refresh the feed here
+        });
+
+        document.getElementById('chat-room-button').addEventListener('click', function() {
+            document.getElementById('menu').style.display = 'none';
+            document.getElementById('chat-room').style.display = 'flex';
+        });
+
+        document.getElementById('send-message').addEventListener('click', function() {
+            const messageInput = document.getElementById('message-input');
+            const messageText = messageInput.value.trim();
+            if (messageText) {
+                const messageElement = document.createElement('div');
+                messageElement.textContent = `${new Date().toLocaleTimeString()} - ${messageText}`;
+                document.getElementById('messages').appendChild(messageElement);
+                messageInput.value = '';
+
+                setTimeout(() => {
+                    messageElement.remove();
+                }, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
+            }
+        });
+    </script>
 
 </body>
 </html>
