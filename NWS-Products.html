@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShowLow's NWS Product Puller ver. beta 1.0</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .menu-frame {
+            margin-top: 50px;
+        }
+        .menu-button {
+            display: block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .menu-button:hover {
+            background-color: #0056b3;
+        }
+        .warning-display {
+            width: 80%;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .nav-button {
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-frame" id="menu-frame">
+        <button class="menu-button" onclick="showWarnings()">NWS Products</button>
+    </div>
+
+    <div id="display-frame" style="display:none;"></div>
+
+    <script>
+        let warningIndex = 0;
+        let warnings = [];
+
+        async function fetchData(url) {
+            try {
+                let response = await fetch(url);
+                if (!response.ok) throw new Error('Network response was not ok ' + response.statusText);
+                return await response.json();
+            } catch (error) {
+                console.error('Fetch error: ', error);
+                alert('Error fetching data: ' + error.message);
+            }
+        }
+
+        async function showWarnings() {
+            let url = 'https://api.weather.gov/alerts/active?status=actual&message_type=alert';
+            let data = await fetchData(url);
+            if (data && data.features) {
+                warnings = data.features;
+                warningIndex = 0;
+                displayWarning();
+            }
+        }
+
+        function displayWarning() {
+            if (warnings.length > 0) {
+                let warning = warnings[warningIndex].properties;
+                let event = warning.event;
+                let headline = warning.headline;
+                let description = warning.description;
+                let instruction = warning.instruction || 'N/A';
+                let nwsHeadlines = warning.parameters && warning.parameters.NWSheadline ? warning.parameters.NWSheadline.join('\n') : '';
+
+                let displayFrame = document.getElementById('display-frame');
+                displayFrame.innerHTML = `
+                    <div class="warning-display">
+                        <h3>${event}</h3>
+                        <p><strong>Headline:</strong> ${headline}</p>
+                        <p>${nwsHeadlines}</p>
+                        <p><strong>Description:</strong> ${description}</p>
+                        <p><strong>Instruction:</strong> ${instruction}</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <button class="nav-button" onclick="prevWarning()">🢀</button>
+                        <button class="nav-button" onclick="nextWarning()">🢂</button>
+                        <button class="nav-button" onclick="showMenu()">Back to Menu</button>
+                    </div>
+                `;
+                displayFrame.style.display = 'block';
+            }
+        }
+
+        function nextWarning() {
+            warningIndex = (warningIndex + 1) % warnings.length;
+            displayWarning();
+        }
+
+        function prevWarning() {
+            warningIndex = (warningIndex - 1 + warnings.length) % warnings.length;
+            displayWarning();
+        }
+
+        function showMenu() {
+            let displayFrame = document.getElementById('display-frame');
+            displayFrame.style.display = 'none';
+            displayFrame.innerHTML = '';
+        }
+    </script>
+</body>
+</html>
