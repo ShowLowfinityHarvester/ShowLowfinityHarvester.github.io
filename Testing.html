@@ -40,7 +40,7 @@
             display: block;
             width: 100%;
             padding: 10px;
-            background-color: #90a728;
+            background-color: #001aff;
             border: none;
             color: white;
             border-radius: 5px;
@@ -81,6 +81,12 @@
             <label><input type="radio" name="q4" value="The vehicle on the right"> The vehicle on the right</label>
             <label><input type="radio" name="q4" value="Me and ONLY me because I am a pathetic individual who does not care about other peoples lives"> Me and ONLY me because I am a pathetic individual who does not care about other peoples lives</label>
         </div>
+        <div class="question">
+            <h3>5. When getting pulled over by Frank Sloup in Pinal County, You should: </h3>
+            <label><input type="radio" name="q5" value="Have a fucking meltdown because you do not want to accept any tickets and request to talk to a lawyer and ask for his superviser because you think you know the law even though you don't"> Have a fucking meltdown because you do not want to accept any tickets and request to talk to a lawyer and ask for his superviser because you think you know the law even though you don't</label>
+            <label><input type="radio" name="q5" value="Ask if you are on Fridays with Frank"> Ask if you are on Fridays with Frank and BEG not to be on the show because you don't want your pathetic ass on YouTube</label>
+            <label><input type="radio" name="q5" value="All of the above"> All of the above</label>
+        </div>
         <button type="button" class="submit-btn" onclick="submitQuiz()">Submit</button>
     </form>
     <div id="result" style="margin-top: 20px; text-align: center;"></div>
@@ -96,7 +102,8 @@
             q1: '195',
             q2: 'Run the fucking stop sign because fuck the law',
             q3: 'Floor it because fuck dem kidsssss',
-            q4: 'Me and ONLY me because I am a pathetic individual who does not care about other peoples lives'
+            q4: 'Me and ONLY me because I am a pathetic individual who does not care about other peoples lives',
+            q5: 'All of the above'
         };
 
         var formData = new FormData(form);
@@ -106,7 +113,7 @@
             }
         }
 
-        result.innerText = 'Congrats you pathetic individual, you scored a staggering ' + score + ' out of 3';
+        result.innerText = 'Congrats you pathetic individual, you scored a staggering ' + score + ' out of 3, Unfortunately, you need # out of # in order to pass this quiz. loser!';
     }
 </script>
 
