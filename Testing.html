@@ -40,7 +40,7 @@
             display: block;
             width: 100%;
             padding: 10px;
-            background-color: #28a745;
+            background-color: #90a728;
             border: none;
             color: white;
             border-radius: 5px;
@@ -48,7 +48,7 @@
             cursor: pointer;
         }
         .submit-btn:hover {
-            background-color: #554bad;
+            background-color: #000000;
         }
     </style>
 </head>
@@ -70,10 +70,16 @@
             <label><input type="radio" name="q2" value="Run the fucking stop sign because fuck the law"> Run the fucking stop sign because fuck the law</label>
         </div>
         <div class="question">
-            <h3>3. Who has the right of way at a four-way stop?</h3>
-            <label><input type="radio" name="q3" value="The first vehicle to arrive"> The first vehicle to arrive</label>
-            <label><input type="radio" name="q3" value="The vehicle on the right"> The vehicle on the right</label>
-            <label><input type="radio" name="q3" value="The largest vehicle"> The largest vehicle</label>
+            <h3>3. A school bus is stopped on a four lane road with the stop sign arm extended, you must:</h3>
+            <label><input type="radio" name="q3" value="Stop and wait for the bus to move, because that is the right thing to do"> Stop and wait for the bus to move, because that is the right thing to do</label>
+            <label><input type="radio" name="q3" value="Slow down"> Slow down</label>
+            <label><input type="radio" name="q3" value="Floor it because fuck dem kidsssss"> Floor it because fuck dem kidsssss</label>
+        </div>
+        <div class="question">
+            <h3>4. Who has the right of way at a four-way stop?</h3>
+            <label><input type="radio" name="q4" value="The first vehicle to arrive"> The first vehicle to arrive</label>
+            <label><input type="radio" name="q4" value="The vehicle on the right"> The vehicle on the right</label>
+            <label><input type="radio" name="q4" value="Me and ONLY me because I am a pathetic individual who does not care about other peoples lives"> Me and ONLY me because I am a pathetic individual who does not care about other peoples lives</label>
         </div>
         <button type="button" class="submit-btn" onclick="submitQuiz()">Submit</button>
     </form>
@@ -89,7 +95,8 @@
         var answers = {
             q1: '195',
             q2: 'Run the fucking stop sign because fuck the law',
-            q3: 'The first vehicle to arrive'
+            q3: 'Floor it because fuck dem kidsssss',
+            q4: 'Me and ONLY me because I am a pathetic individual who does not care about other peoples lives'
         };
 
         var formData = new FormData(form);
@@ -99,7 +106,7 @@
             }
         }
 
-        result.innerText = 'You scored ' + score + ' out of 3';
+        result.innerText = 'Congrats you pathetic individual, you scored a staggering ' + score + ' out of 3';
     }
 </script>
 
