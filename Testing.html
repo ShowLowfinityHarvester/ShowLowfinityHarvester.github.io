@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Driving Quiz</title>
+    <title>Arizona Drivers Education Test - Made by everyone hosted on @Arizonacan'tdrive</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -70,7 +70,7 @@
             <label><input type="radio" name="q2" value="Run the fucking stop sign because fuck the law"> Run the fucking stop sign because fuck the law</label>
         </div>
         <div class="question">
-            <h3>3. A school bus is stopped on a four lane road with the stop sign arm extended, you must:</h3>
+            <h3>3. A school bus is stopped on a four lane road with the stop sign arm extended, you should:</h3>
             <label><input type="radio" name="q3" value="Stop and wait for the bus to move, because that is the right thing to do"> Stop and wait for the bus to move, because that is the right thing to do</label>
             <label><input type="radio" name="q3" value="Slow down"> Slow down</label>
             <label><input type="radio" name="q3" value="Floor it because fuck dem kidsssss"> Floor it because fuck dem kidsssss</label>
@@ -82,10 +82,40 @@
             <label><input type="radio" name="q4" value="Me and ONLY me because I am a pathetic individual who does not care about other peoples lives"> Me and ONLY me because I am a pathetic individual who does not care about other peoples lives</label>
         </div>
         <div class="question">
-            <h3>5. When getting pulled over by Frank Sloup in Pinal County, You should: </h3>
+            <h3>5. When getting pulled over by Frank Sloup in Pinal County, you should: </h3>
             <label><input type="radio" name="q5" value="Have a fucking meltdown because you do not want to accept any tickets and request to talk to a lawyer and ask for his superviser because you think you know the law even though you don't"> Have a fucking meltdown because you do not want to accept any tickets and request to talk to a lawyer and ask for his superviser because you think you know the law even though you don't</label>
             <label><input type="radio" name="q5" value="Ask if you are on Fridays with Frank"> Ask if you are on Fridays with Frank and BEG not to be on the show because you don't want your pathetic ass on YouTube</label>
             <label><input type="radio" name="q5" value="All of the above"> All of the above</label>
+        </div>
+        <div class="question">
+            <h3>6. If you missed your exit on the highway, you should: </h3>
+            <label><input type="radio" name="q6" value="Drive to next exit"> Drive to the next exit because that is the right thing to do</label>
+            <label><input type="radio" name="q6" value="Turn around"> Turn around into oncomming traffic and go to your exit</label>
+            <label><input type="radio" name="q6" value="Drive up ramp"> Drive up the ramp off the highway as shown in that one @Arizonacan'tdrive video</label>
+        </div>
+        <div class="question">
+            <h3>7. When Driving on a wet road, you should: </h3>
+            <label><input type="radio" name="q7" value="do nothing"> Do absolutely nothing and hope you don't hydroplane</label>
+            <label><input type="radio" name="q7" value="Low beamers"> turn on low beam headlights</label>
+            <label><input type="radio" name="q7" value="Reduce Speed"> Reduce Your speed</label>
+        </div>
+        <div class="question">
+            <h3>8. A disabled person in a wheelchar symbol means that it is reserved for disabled persons: </h3>
+            <label><input type="radio" name="q8" value="No exeptions"> With no execptions whatsoever</label>
+            <label><input type="radio" name="q8" value="Unload"> For unloading shit</label>
+            <label><input type="radio" name="q8" value="free"> It's a free parking space, I should take it, DUHHHHHH</label>
+        </div>
+        <div class="question">
+            <h3>9. The light at an intersection means: </h3>
+            <label><input type="radio" name="q9" value="STOPPPP"> You MUST stop</label>
+            <label><input type="radio" name="q9" value="FLOOR"> You should floor it without checking either way and hope you don't get hit because you are a middle aged mother scrolling on instagram while driving</label>
+            <label><input type="radio" name="q9" value="CHECK"> You can run through it, only if you check both directions of the road first</label>
+        </div>
+        <div class="question">
+            <h3>10. If in a crash, you should: </h3>
+            <label><input type="radio" name="q10" value="Off road"> Drive vehicles to the side of the road off of traffic lanes if able</label>
+            <label><input type="radio" name="q10" value="Hit and run"> RUN THE FUCK AWAY because that isn't your problem, even if you caused it, repairs are too expensive anyways</label>
+            <label><input type="radio" name="q10" value="Momneyyyyyyy"> Call your insurance company and tell them they hit you even if you hit them because you are a pathetic loser</label>
         </div>
         <button type="button" class="submit-btn" onclick="submitQuiz()">Submit</button>
     </form>
@@ -103,7 +133,12 @@
             q2: 'Run the fucking stop sign because fuck the law',
             q3: 'Floor it because fuck dem kidsssss',
             q4: 'Me and ONLY me because I am a pathetic individual who does not care about other peoples lives',
-            q5: 'All of the above'
+            q5: 'All of the above',
+            q6: 'Drive up ramp',
+            q7: 'do nothing',
+            q8: 'free',
+            q9: 'FLOOR',
+            q10: 'Hit and run'
         };
 
         var formData = new FormData(form);
@@ -113,7 +148,7 @@
             }
         }
 
-        result.innerText = 'Congrats you pathetic individual, you scored a staggering ' + score + ' out of 3, Unfortunately, you need # out of # in order to pass this quiz. loser!';
+        result.innerText = 'Congrats you pathetic individual, you scored a staggering ' + score + ' out of 10, Unfortunately, you need 10 out of 10 in order to pass this quiz. loser!';
     }
 </script>
 
