@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WSLF Radio - Main</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('Logo.jpg'); 
+      background-size: cover;  
+      background-position: center;  
+      background-repeat: no-repeat;  
+      background-attachment: fixed;  
+      font-family: Arial, sans-serif;
+      height: 100vh;  
+      display: flex;
+      flex-direction: column;
+    }
+
+    #player-container {
+      text-align: center;
+      margin-top: 200px;
+      flex-grow: 1;  
+    }
+
+    #player {
+      width: 300px;
+    }
+
+    .menu-bar {
+      background-color: #ccc;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 10px;
+      width: 100%;  
+    }
+
+    .menu-bar img {
+      width: 50px;
+      margin-right: 20px;
+    }
+
+    .menu-item {
+      margin-right: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="menu-bar">
+    <img src="WSLF.png" alt="Logo">
+    <div class="menu-item" onclick="window.location.href='about'">About</div>
+    <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/kec94'">⛅ KEC94</div>
+    <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wwg41'">⛅ WWG41</div>
+    <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wxl87'">⛅ WXL87</div>
+  </div>
+
+  <div id="player-container">
+    <audio id="player" controls>
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <script>
+    const m3uPlaylistUrl = "WSLF.m3u"; 
+
+    const audioPlayer = document.getElementById("player");
+
+    audioPlayer.onerror = function() {
+      console.error("Error loading the audio stream:", audioPlayer.error.message);
+    };
+
+    fetch(m3uPlaylistUrl, { mode: 'cors' })
+      .then(response => response.text())
+      .then(data => {
+        const streamUrls = data.split("\n").filter(line => line.trim().length > 0 && !line.startsWith("#"));
+        if (streamUrls.length > 0) {
+          audioPlayer.src = streamUrls[0]; 
+          audioPlayer.load();
+          audioPlayer.play(); 
+        } else {
+          console.error("No valid stream URLs found in the M3U playlist.");
+        }
+      })
+      .catch(error => {
+        console.error("Error fetching the M3U playlist:", error);
+      });
+  </script>
+</body>
+</html>
