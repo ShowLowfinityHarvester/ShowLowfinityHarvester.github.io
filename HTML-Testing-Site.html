@@ -1,38 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WSLF Radio</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
     body {
       margin: 0;
       padding: 0;
-      background-image: url('none.jpg'); 
-      background-size: cover;  
-      background-position: center;  
-      background-repeat: no-repeat;  
-      background-attachment: fixed;  
-      font-family: Arial, sans-serif;
-      height: 100vh;  
+      background: url('Logo.jpg') center / cover no-repeat fixed, #000;
+      font-family: 'Roboto', sans-serif;
+      color: #fff;
       display: flex;
       flex-direction: column;
+      height: 100vh;
     }
 
     .menu-bar {
-      background-color: #ccc;
+      background-color: rgba(0,0,0,0.5);
+      padding: 10px 20px;
       display: flex;
-      justify-content: flex-start;
       align-items: center;
-      padding: 10px;
-      width: 100%;  
+      justify-content: flex-start;
     }
 
     .menu-bar img {
-      width: 50px;
-      margin-right: 20px;
+      width: 40px;
+      margin-right: 15px;
     }
 
     .menu-item {
-      margin-right: 20px;
+      font-weight: 500;
+      margin: 0 15px;
       cursor: pointer;
+      color: #fff;
+    }
+
+    #player-container {
+      text-align: center;
+      margin-top: auto;
+      margin-bottom: 20px;
+    }
+
+    #player {
+      width: 90%;
+      max-width: 300px;
+    }
+
+    #now-playing {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 18px;
     }
   </style>
 </head>
@@ -40,85 +60,44 @@
   <div class="menu-bar">
     <img src="WSLF.png" alt="Logo">
     <div class="menu-item" onclick="window.location.href='about'">About</div>
-    <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org'">🎵 WSLF</div>
     <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/kec94'">⛅ KEC94</div>
     <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wwg41'">⛅ WWG41</div>
     <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wxl87'">⛅ WXL87</div>
   </div>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post - GTA 5 Is Now Released, Long Lines At Gamestop On San Mateo Blvd!</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .blog-banner {
-            width: 100%;
-            height: 300px;
-            background-image: url('WSLF_Post_Archive.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        .title {
-            font-size: 2em;
-            font-weight: bold;
-            margin: 20px 0;
-            text-align: center;
-        }
-        .profile {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .profile img {
-            width: 20px;
-            height: 20px;
-            margin-right: 5px;
-        }
-        .profile a {
-            text-decoration: none;
-            color: black;
-            display: flex;
-            align-items: center;
-        }
-        .thesillydate {
-            font-size: 0.8em;
-            color: grey;
-            margin-left: 10px;
-        }
-        .content {
-            width: 80%;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .paragraph {
-            margin: 20px 0;
-        }
-    </style>
 
-    <div class="blog-banner"></div>
-    <div class="content">
-        <div class="title">GTA 5 Is Now Released, Long Lines At Gamestop On San Mateo Blvd!</div>
-        <div class="profile">
-            <img src="IMG_3643.jpg" alt="Profile Picture">
-<a href="https://wslfradio.org/posts-jayson-doutree">Jayson Doutree</a>
-            <img class="verification" src="check-mark.png" alt="Verified">
-            <span class="thesillydate">Sep 17, 2013</span>
-        </div>
-        <div class="paragraph">
-            We woke up really early this morning to go order the new Grand Theft Auto Game for our PS3 this morning, and the lines were busy!
-        </div>
-        <div class="paragraph">
-            We waited for a really long time to get this game! I've never seen a gamestop this busy before for anything. People even slept overnight just to get this game. Rockstar must be making great money with how crazy it all is here.
-        </div>
-        <div class="paragraph">
-           And all the hype it is getting is sooooo worth it. this is a way better title than the last game. The graphics have been improved significantly and the overall gameplay is just smooth. The radio stations also sound really good. I wonder if that paramore song is on there? I don't care if I'm 5 years old at this point I'm still playing it! So What are you waiting for? Go to your nearest gamestop and try out this game if you haven't already! 
-        </div>
-    </div>
+  <div id="player-container">
+    <audio id="player" controls>
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <div id="now-playing">Loading currently playing...</div>
+
+<script>
+    const xspfUrl = "https://icecast.gwes-eas.network/ERN-SLF.xspf"; // Update this URL to the correct path
+
+    async function fetchNowPlaying() {
+      try {
+        const response = await fetch(xspfUrl);
+        const data = await response.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(data, "application/xml");
+        const annotation = xmlDoc.querySelector("annotation").textContent;
+
+        // Updated regex to correctly parse "Currently playing" information
+        // Assuming "Currently playing:" is part of the string that follows
+        const match = annotation.match(/Currently playing:\s*(.*?)\s*$/m);
+        const playingInfo = match ? match[1] : "No currently playing info available";
+
+        document.getElementById('now-playing').textContent = "Now Playing: " + playingInfo;
+      } catch (error) {
+        console.error("Failed to fetch or parse the XSPF file:", error);
+        document.getElementById('now-playing').textContent = "Failed to load currently playing info.";
+      }
+    }
+
+    setInterval(fetchNowPlaying, 30000); // Update every 30 seconds
+    fetchNowPlaying(); // Initial fetch
+</script>
 </body>
 </html>
