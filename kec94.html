@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KEC94- NOAA Weather Radio</title>
+  <title>KEC94 - NOAA Weather Radio</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
@@ -37,6 +37,19 @@
       cursor: pointer;
       color: #fff;
     }
+    
+        .content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .text-content {
+      font-size: 1.5rem;
+      line-height: 1.5;
+    }
 
     #player-container {
       text-align: center;
@@ -58,7 +71,14 @@
     <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wwg41'">⛅ WWG41</div>
     <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wxl87'">⛅ WXL87</div>
   </div>
-
+  
+  <div class="content">
+    <div class="text-content">
+      <b>KEC94 - Phoenix, AZ</p>
+      <b>162.550 MHz</p>
+    </div>
+  </div>
+  
   <div id="player-container">
     <audio id="player" controls>
       Your browser does not support the audio element.
