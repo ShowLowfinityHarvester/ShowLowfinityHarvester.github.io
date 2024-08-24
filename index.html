@@ -3,50 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WSLF Radio - Main</title>
+  <title>WSLF Radio</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       padding: 0;
-      background-image: url('Logo.jpg'); 
-      background-size: cover;  
-      background-position: center;  
-      background-repeat: no-repeat;  
-      background-attachment: fixed;  
-      font-family: Arial, sans-serif;
-      height: 100vh;  
+      background: url('Logo.jpg') center / cover no-repeat fixed, #000;
+      font-family: 'Roboto', sans-serif;
+      color: #fff;
       display: flex;
       flex-direction: column;
+      height: 100vh;
+    }
+
+    .menu-bar {
+      background-color: rgba(0,0,0,0.5);
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .menu-bar img {
+      width: 40px;
+      margin-right: 15px;
+    }
+
+    .menu-item {
+      font-weight: 500;
+      margin: 0 15px;
+      cursor: pointer;
+      color: #fff;
     }
 
     #player-container {
       text-align: center;
-      margin-top: 200px;
-      flex-grow: 1;  
+      margin-top: auto;
+      margin-bottom: 20px;
     }
 
     #player {
-      width: 300px;
-    }
-
-    .menu-bar {
-      background-color: #ccc;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      padding: 10px;
-      width: 100%;  
-    }
-
-    .menu-bar img {
-      width: 50px;
-      margin-right: 20px;
-    }
-
-    .menu-item {
-      margin-right: 20px;
-      cursor: pointer;
+      width: 90%;
+      max-width: 300px;
     }
   </style>
 </head>
@@ -66,22 +66,21 @@
   </div>
 
   <script>
-    const m3uPlaylistUrl = "WSLF.m3u"; 
-
+    const m3uPlaylistUrl = "WSLF.m3u";
     const audioPlayer = document.getElementById("player");
 
-    audioPlayer.onerror = function() {
+    audioPlayer.onerror = () => {
       console.error("Error loading the audio stream:", audioPlayer.error.message);
     };
 
     fetch(m3uPlaylistUrl, { mode: 'cors' })
       .then(response => response.text())
       .then(data => {
-        const streamUrls = data.split("\n").filter(line => line.trim().length > 0 && !line.startsWith("#"));
-        if (streamUrls.length > 0) {
-          audioPlayer.src = streamUrls[0]; 
+        const streamUrls = data.split("\n").filter(line => line.trim() && !line.startsWith("#"));
+        if (streamUrls.length) {
+          audioPlayer.src = streamUrls[0];
           audioPlayer.load();
-          audioPlayer.play(); 
+          audioPlayer.play();
         } else {
           console.error("No valid stream URLs found in the M3U playlist.");
         }
