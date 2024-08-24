@@ -1,38 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WSLF Radio</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
     body {
       margin: 0;
       padding: 0;
-      background-image: url('none.jpg'); 
-      background-size: cover;  
-      background-position: center;  
-      background-repeat: no-repeat;  
-      background-attachment: fixed;  
-      font-family: Arial, sans-serif;
-      height: 100vh;  
+      background: url('Logo.jpg') center / cover no-repeat fixed, #000;
+      font-family: 'Roboto', sans-serif;
+      color: #fff;
       display: flex;
       flex-direction: column;
+      height: 100vh;
     }
 
-    .menu-bar {
-      background-color: #ccc;
+    .menu-bar, .info-bar {
+      background-color: rgba(0,0,0,0.5);
+      padding: 10px 20px;
       display: flex;
-      justify-content: flex-start;
       align-items: center;
-      padding: 10px;
-      width: 100%;  
+      justify-content: flex-start;
     }
 
-    .menu-bar img {
-      width: 50px;
-      margin-right: 20px;
+    .menu-bar img, .info-bar img {
+      width: 40px;
+      height: 40px;  /* Ensure the image is a square */
+      margin-right: 15px;
     }
 
-    .menu-item {
-      margin-right: 20px;
+    .menu-item, .track-info {
+      font-weight: 500;
+      margin: 0 15px;
       cursor: pointer;
+      color: #fff;
+    }
+
+    #player-container {
+      text-align: center;
+      margin-top: auto;
+      margin-bottom: 20px;
+    }
+
+    #player {
+      width: 90%;
+      max-width: 300px;
     }
   </style>
 </head>
@@ -40,85 +55,68 @@
   <div class="menu-bar">
     <img src="WSLF.png" alt="Logo">
     <div class="menu-item" onclick="window.location.href='about'">About</div>
-    <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org'">🎵 WSLF</div>
     <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/kec94'">⛅ KEC94</div>
     <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wwg41'">⛅ WWG41</div>
     <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wxl87'">⛅ WXL87</div>
   </div>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post - GTA 5 Is Now Released, Long Lines At Gamestop On San Mateo Blvd!</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .blog-banner {
-            width: 100%;
-            height: 300px;
-            background-image: url('WSLF_Post_Archive.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        .title {
-            font-size: 2em;
-            font-weight: bold;
-            margin: 20px 0;
-            text-align: center;
-        }
-        .profile {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .profile img {
-            width: 20px;
-            height: 20px;
-            margin-right: 5px;
-        }
-        .profile a {
-            text-decoration: none;
-            color: black;
-            display: flex;
-            align-items: center;
-        }
-        .thesillydate {
-            font-size: 0.8em;
-            color: grey;
-            margin-left: 10px;
-        }
-        .content {
-            width: 80%;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .paragraph {
-            margin: 20px 0;
-        }
-    </style>
 
-    <div class="blog-banner"></div>
-    <div class="content">
-        <div class="title">GTA 5 Is Now Released, Long Lines At Gamestop On San Mateo Blvd!</div>
-        <div class="profile">
-            <img src="IMG_3643.jpg" alt="Profile Picture">
-<a href="https://wslfradio.org/posts-jayson-doutree">Jayson Doutree</a>
-            <img class="verification" src="check-mark.png" alt="Verified">
-            <span class="thesillydate">Sep 17, 2013</span>
-        </div>
-        <div class="paragraph">
-            We woke up really early this morning to go order the new Grand Theft Auto Game for our PS3 this morning, and the lines were busy!
-        </div>
-        <div class="paragraph">
-            We waited for a really long time to get this game! I've never seen a gamestop this busy before for anything. People even slept overnight just to get this game. Rockstar must be making great money with how crazy it all is here.
-        </div>
-        <div class="paragraph">
-           And all the hype it is getting is sooooo worth it. this is a way better title than the last game. The graphics have been improved significantly and the overall gameplay is just smooth. The radio stations also sound really good. I wonder if that paramore song is on there? I don't care if I'm 5 years old at this point I'm still playing it! So What are you waiting for? Go to your nearest gamestop and try out this game if you haven't already! 
-        </div>
-    </div>
+  <div id="player-container">
+    <audio id="player" controls>
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <div class="info-bar">
+    <img id="album-art" src="default_art.jpg" alt="Album Art">
+    <span class="track-info" id="track-name">Loading...</span> - <span class="track-info" id="artist-name">Please wait</span>
+  </div>
+
+  <script>
+    const m3uPlaylistUrl = "WSLF.m3u";
+    const audioPlayer = document.getElementById("player");
+    const trackNameElement = document.getElementById('track-name');
+    const artistNameElement = document.getElementById('artist-name');
+    const albumArtElement = document.getElementById('album-art');
+
+    audioPlayer.onerror = () => {
+      console.error("Error loading the audio stream:", audioPlayer.error.message);
+    };
+
+    fetch(m3uPlaylistUrl, { mode: 'cors' })
+      .then(response => response.text())
+      .then(data => {
+        const streamUrls = data.split("\n").filter(line => line.trim() && !line.startsWith("#"));
+        if (streamUrls.length) {
+          audioPlayer.src = streamUrls[0];
+          audioPlayer.load();
+          audioPlayer.play();
+        } else {
+          console.error("No valid stream URLs found in the M3U playlist.");
+        }
+      })
+      .catch(error => {
+        console.error("Error fetching the M3U playlist:", error);
+      });
+
+    // Dummy function to simulate fetching metadata and updating UI
+    function fetchMetadataAndUpdateUI() {
+      // Simulate track data (replace with actual API calls)
+      const trackData = {
+        trackName: "Song Title",
+        artistName: "Artist Name",
+        albumArtUrl: "https://example.com/path/to/album/art.jpg"
+      };
+
+      trackNameElement.textContent = trackData.trackName;
+      artistNameElement.textContent = trackData.artistName;
+      albumArtElement.src = trackData.albumArtUrl;
+    }
+
+    // Update metadata every 30 seconds
+    setInterval(fetchMetadataAndUpdateUI, 30000);
+
+    // Initial update
+    fetchMetadataAndUpdateUI();
+  </script>
 </body>
 </html>
