@@ -48,6 +48,7 @@
       background: rgba(0, 0, 0, 0.8);
       border-radius: 8px;
       text-align: left;
+      overflow: hidden; /* Prevent overflow */
     }
 
     h1, p {
@@ -56,6 +57,11 @@
 
     a {
       color: #4e9af1;
+    }
+
+    img {
+      width: 100%; /* Make sure the image stays within the container */
+      height: auto;
     }
 
     audio {
@@ -77,7 +83,7 @@
     <h1>2024 Presidential Election Consensus Map</h1>
     <p>The 2024 Presidential Election Consensus map is a collaborative projection that gathers forecasts from multiple political analysts and organizations. This map puts these forecasts into a single visualization, showing the current consensus on which party or candidate is expected to win each state based on the most recent data. The consensus can change as the election cycle progresses, but it serves as a key tool for understanding the expected outcomes in various battleground and solidified states.</p>
 
-    <p>It take 270 votes to win the election.</p>
+    <p>It takes 270 votes to win the election.</p>
 
     <a href="https://www.270towin.com/maps/consensus-2024-presidential-election-forecast">
       <img src="https://www.270towin.com/map-images/consensus-2024-presidential-election-forecast.png" alt="2024 Consensus Map">
