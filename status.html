@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WSLF Radio Station Status</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #333;
+      color: #f0f0f0;
+      line-height: 1.6;
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 8px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #f0f0f0;
+    }
+
+    .station-status {
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 8px;
+      background-color: #444;
+    }
+
+    .station-name {
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .status {
+      font-size: 18px;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 4px;
+      color: #fff;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    .status.green {
+      background-color: #4CAF50;
+    }
+    
+    .status.yellow {
+      background-color: #FFA500;
+    }
+    .status.red {
+      background-color: #FF5252;
+    }
+
+    .description {
+      font-size: 14px;
+      color: #ccc;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <h1>Online Stream Status</h1>
+
+    
+    <div class="station-status">
+      <div class="station-name">WSLF Radio</div>
+      <div class="status yellow">Degraded</div>
+      <p class="description">
+        EAS Only - Status Degraded due to a server issue
+      </p>
+    </div>
+
+    
+    <div class="station-status">
+      <div class="station-name">KEC94</div>
+      <div class="status red">Offline</div>
+      <p class="description">
+        The KEC94 stream is currently down on all required websites. The motherboard on the main streaming computer is currently experiencing issues, and a new computer may be needed. We are actively looking for a solution to bring the stream back up. KEC94 is our top priority to bring up at the moment.
+      </p>
+    </div>
+
+    <!-- WWG41 -->
+    <div class="station-status">
+      <div class="station-name">WWG41</div>
+      <div class="status red">Offline</div>
+      <p class="description">
+        The WWG41 stream is currently down on all required websites. The motherboard on the main streaming computer is currently experiencing issues, and a new computer may be needed. We are actively looking for a solution to bring the stream back up. KEC94 is our top priority to bring up at the moment.
+      </p>
+    </div>
+
+    
+    <div class="station-status">
+      <div class="station-name">WWG42</div>
+      <div class="status red">Offline</div>
+      <p class="description">
+        The WWG42 stream is currently down on all required websites. The motherboard on the main streaming computer is currently experiencing issues, and a new computer may be needed. We are actively looking for a solution to bring the stream back up. KEC94 is our top priority to bring up at the moment.
+        
+      </p>
+    </div>
+    
+       
+    <div class="station-status">
+      <div class="station-name">WXL87</div>
+      <div class="status green">Online</div>
+      <p class="description">
+        The WXl87 Stream is currently up and running on all required websites!
+      </p>
+    </div>
+  </div>
+</body>
+</html>
