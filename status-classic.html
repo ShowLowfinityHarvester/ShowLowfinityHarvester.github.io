@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WSLF Radio Station Status</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #e0e0e0; 
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #f8f8f8;
+      border-radius: 12px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+      border: 1px solid #ccc;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      font-weight: 700;
+      font-size: 28px;
+      text-shadow: 0px 1px 0px #fff; 
+      margin-bottom: 20px;
+    }
+
+    .station-status {
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 8px;
+      background: linear-gradient(to bottom, #f7f7f7, #e5e5e5); 
+      border: 1px solid #ccc;
+      box-shadow: inset 0px 1px 0px #fff, 0px 2px 4px rgba(0, 0, 0, 0.15); 
+    }
+
+    .station-name {
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 10px;
+      color: #333;
+      text-shadow: 0px 1px 0px #fff;
+    }
+
+    .status {
+      font-size: 18px;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 5px;
+      color: #fff;
+      margin-bottom: 10px;
+      display: inline-block;
+      text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2); 
+    }
+
+    .status.green {
+      background: linear-gradient(to bottom, #4CAF50, #388E3C); 
+      border: 1px solid #3e8e41;
+    }
+
+    .status.yellow {
+      background: linear-gradient(to bottom, #FFA500, #FF8C00); 
+      border: 1px solid #cc7a00;
+    }
+
+    .status.red {
+      background: linear-gradient(to bottom, #FF5252, #D32F2F); 
+      border: 1px solid #c62828;
+    }
+
+    .description {
+      font-size: 14px;
+      color: #555;
+      margin-top: 10px;
+      text-shadow: 0px 1px 0px #fff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 12px;
+      color: #777;
+      text-shadow: 0px 1px 0px #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <h1>Online Stream Status</h1>
+
+    
+    <div class="station-status">
+      <div class="station-name">WSLF Radio</div>
+      <div class="status yellow">Degraded</div>
+      <p class="description">
+        EAS Only - Status Degraded due to a server issue
+      </p>
+    </div>
+
+    
+    <div class="station-status">
+      <div class="station-name">KEC94</div>
+      <div class="status red">Offline</div>
+      <p class="description">
+        The KEC94 stream is currently down on all required websites. The motherboard on the main streaming computer is currently experiencing issues, and a new computer may be needed. We are actively looking for a solution to bring the stream back up. KEC94 is our top priority to bring up at the moment.
+      </p>
+    </div>
+
+    
+    <div class="station-status">
+      <div class="station-name">WWG41</div>
+      <div class="status red">Offline</div>
+      <p class="description">
+        The WWG41 stream is currently down on all required websites. The motherboard on the main streaming computer is currently experiencing issues, and a new computer may be needed. We are actively looking for a solution to bring the stream back up. KEC94 is our top priority to bring up at the moment.
+      </p>
+    </div>
+
+    
+    <div class="station-status">
+      <div class="station-name">WWG42</div>
+      <div class="status red">Offline</div>
+      <p class="description">
+        The WWG42 stream is currently down on all required websites. The motherboard on the main streaming computer is currently experiencing issues, and a new computer may be needed. We are actively looking for a solution to bring the stream back up. KEC94 is our top priority to bring up at the moment.
+      </p>
+    </div>
+
+    
+    <div class="station-status">
+      <div class="station-name">WXL87</div>
+      <div class="status green">Online</div>
+      <p class="description">
+        The WXL87 Stream is currently up and running on all required websites!
+      </p>
+    </div>
+  </div>
+</body>
+</html>
