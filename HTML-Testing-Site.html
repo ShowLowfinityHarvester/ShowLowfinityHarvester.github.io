@@ -1,40 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post - Daft Punk Releases New Album (Random Associated Memory)</title>
     <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-image: url('none.jpg'); 
-      background-size: cover;  
-      background-position: center;  
-      background-repeat: no-repeat;  
-      background-attachment: fixed;  
-      font-family: Arial, sans-serif;
-      height: 100vh;  
-      display: flex;
-      flex-direction: column;
-    }
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: 'Roboto', sans-serif;
+          background-color: #333;
+          color: #f0f0f0;
+          line-height: 1.6;
+        }
 
-    .menu-bar {
-      background-color: #ccc;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      padding: 10px;
-      width: 100%;  
-    }
+        .menu-bar {
+          background-color: #444;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          padding: 10px;
+          width: 100%;
+        }
 
-    .menu-bar img {
-      width: 50px;
-      margin-right: 20px;
-    }
+        .menu-bar img {
+          width: 50px;
+          margin-right: 20px;
+        }
 
-    .menu-item {
-      margin-right: 20px;
-      cursor: pointer;
-    }
-  </style>
+        .menu-item {
+          margin-right: 20px;
+          cursor: pointer;
+          color: #f0f0f0;
+          text-decoration: none;
+        }
+
+        .menu-item:hover {
+          color: #ffa500;
+        }
+
+        .content {
+          max-width: 800px;
+          margin: 20px auto;
+          padding: 20px;
+          background: rgba(0, 0, 0, 0.8);
+          border-radius: 8px;
+        }
+
+        .blog-banner {
+          width: 100%;
+          height: 300px;
+          background-image: url('WSLF_Post_Archive.jpg');
+          background-size: cover;
+          background-position: center;
+          border-radius: 8px 8px 0 0;
+        }
+
+        h1 {
+          text-align: center;
+          color: #f0f0f0;
+        }
+
+        .profile {
+          display: flex;
+          align-items: center;
+          margin-bottom: 10px;
+        }
+
+        .profile img {
+          width: 20px;
+          height: 20px;
+          margin-right: 5px;
+        }
+
+        .profile a {
+          text-decoration: none;
+          color: #ffa500;
+          display: flex;
+          align-items: center;
+        }
+
+        .profile a:hover {
+          text-decoration: underline;
+        }
+
+        .verification {
+          margin-left: 5px;
+          width: 16px;
+          height: 16px;
+        }
+
+        .thesillydate {
+          font-size: 0.8em;
+          color: #ccc;
+          margin-left: 10px;
+        }
+
+        .paragraph {
+          margin: 20px 0;
+        }
+
+        .station-status {
+          padding: 20px;
+          margin: 15px 0;
+          border-radius: 8px;
+          background-color: #444;
+        }
+
+        .station-name {
+          font-size: 24px;
+          font-weight: 500;
+          margin-bottom: 10px;
+        }
+
+        .status {
+          font-size: 18px;
+          font-weight: bold;
+          padding: 10px;
+          border-radius: 4px;
+          color: #fff;
+          margin-bottom: 10px;
+          display: inline-block;
+        }
+
+        .status.green {
+          background-color: #4CAF50;
+        }
+        
+        .status.yellow {
+          background-color: #FFA500;
+        }
+        .status.red {
+          background-color: #FF5252;
+        }
+
+        .description {
+          font-size: 14px;
+          color: #ccc;
+          margin-top: 5px;
+        }
+    </style>
 </head>
 <body>
   <div class="menu-bar">
@@ -45,80 +150,25 @@
     <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wwg41'">⛅ WWG41</div>
     <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wxl87'">⛅ WXL87</div>
   </div>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post - GTA 5 Is Now Released, Long Lines At Gamestop On San Mateo Blvd!</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .blog-banner {
-            width: 100%;
-            height: 300px;
-            background-image: url('WSLF_Post_Archive.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        .title {
-            font-size: 2em;
-            font-weight: bold;
-            margin: 20px 0;
-            text-align: center;
-        }
-        .profile {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .profile img {
-            width: 20px;
-            height: 20px;
-            margin-right: 5px;
-        }
-        .profile a {
-            text-decoration: none;
-            color: black;
-            display: flex;
-            align-items: center;
-        }
-        .thesillydate {
-            font-size: 0.8em;
-            color: grey;
-            margin-left: 10px;
-        }
-        .content {
-            width: 80%;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .paragraph {
-            margin: 20px 0;
-        }
-    </style>
 
+  <div class="content">
     <div class="blog-banner"></div>
-    <div class="content">
-        <div class="title">GTA 5 Is Now Released, Long Lines At Gamestop On San Mateo Blvd!</div>
-        <div class="profile">
-            <img src="IMG_3643.jpg" alt="Profile Picture">
-<a href="https://wslfradio.org/posts-jayson-doutree">Jayson Doutree</a>
-            <img class="verification" src="check-mark.png" alt="Verified">
-            <span class="thesillydate">Sep 17, 2013</span>
-        </div>
-        <div class="paragraph">
-            We woke up really early this morning to go order the new Grand Theft Auto Game for our PS3 this morning, and the lines were busy!
-        </div>
-        <div class="paragraph">
-            We waited for a really long time to get this game! I've never seen a gamestop this busy before for anything. People even slept overnight just to get this game. Rockstar must be making great money with how crazy it all is here.
-        </div>
-        <div class="paragraph">
-           And all the hype it is getting is sooooo worth it. this is a way better title than the last game. The graphics have been improved significantly and the overall gameplay is just smooth. The radio stations also sound really good. I wonder if that paramore song is on there? I don't care if I'm 5 years old at this point I'm still playing it! So What are you waiting for? Go to your nearest gamestop and try out this game if you haven't already! 
-        </div>
+    <h1>Daft Punk Releases New Album (Random Associated Memory)</h1>
+    <div class="profile">
+      <img src="IMG_3643.jpg" alt="Profile Picture">
+      <a href="https://wslfradio.org/posts-jayson-doutree">Jayson Doutree</a>
+      <img class="verification" src="check-mark.png" alt="Verified">
+      <span class="thesillydate">May 20, 2013</span>
     </div>
+    <div class="paragraph">
+        Daft Punk's new album was released today internationally after being released in Australia 3 days ago.
+    </div>
+    <div class="paragraph">
+        The album features people like Pharrell Williams.
+    </div>
+    <div class="paragraph">
+       We will be listening to the album later today and doing a full in-depth review of it. 
+    </div>
+  </div>
 </body>
 </html>
