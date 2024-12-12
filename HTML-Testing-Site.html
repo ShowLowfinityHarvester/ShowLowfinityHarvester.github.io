@@ -48,12 +48,23 @@
         }
 
         .blog-banner {
-          width: 100%;
-          height: 300px;
-          background-image: url('WSLF_Post_Archive.jpg');
-          background-size: cover;
-          background-position: center;
-          border-radius: 8px 8px 0 0;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          background: #555;
+          padding: 20px;
+          border-radius: 8px 8px 8px 8px;
+        }
+
+        .blog-banner img {
+          width: 100px;
+          height: auto;
+        }
+
+        .blog-banner h1 {
+          margin: 0;
+          color: #f0f0f0;
+          font-size: 1.8em;
         }
 
         h1 {
@@ -68,9 +79,11 @@
         }
 
         .profile img {
-          width: 20px;
-          height: 20px;
-          margin-right: 5px;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-right: 10px;
         }
 
         .profile a {
@@ -86,8 +99,9 @@
 
         .verification {
           margin-left: 5px;
-          width: 16px;
-          height: 16px;
+          width: 12px;
+          height: 12px;
+          object-fit: contain;
         }
 
         .thamfndate {
@@ -112,7 +126,10 @@
   </div>
 
   <div class="content">
-    <div class="blog-banner"></div>
+    <div class="blog-banner">
+      <img src="WSLF.png" alt="WSLF Logo">
+      <h1>Post Archive</h1>
+    </div>
     <h1>Daft Punk Releases New Album (Random Associated Memory)</h1>
     <div class="profile">
       <img src="IMG_3643.jpg" alt="Profile Picture">
