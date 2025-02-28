@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WSLF Radio NOAA Weather Radio Stream Information</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #333;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+
+        .menu-bar {
+            background-color: #444;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .menu-bar img {
+            width: 50px;
+            margin-right: 20px;
+        }
+
+        .menu-item {
+            margin-right: 20px;
+            cursor: pointer;
+            color: #f0f0f0;
+            text-decoration: none;
+        }
+
+        .menu-item:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            color: #f0f0f0;
+        }
+
+        .station {
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .station-header {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .status {
+            font-size: 16px;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        .status.green {
+            background-color: #4CAF50;
+        }
+
+        .status.yellow {
+            background-color: #FFA500;
+        }
+
+        .status.red {
+            background-color: #FF5252;
+        }
+
+        .details {
+            font-size: 14px;
+            color: #ddd;
+            margin: 5px 0;
+        }
+
+        .description {
+            font-size: 14px;
+            color: #ccc;
+            margin-top: 10px;
+        }
+
+        .updates {
+            margin-top: 40px;
+        }
+
+        .updates-thingy {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .update-date {
+            font-size: 14px;
+            font-weight: bold;
+            color: #ddd;
+        }
+
+        hr {
+            border: none;
+            height: 2px;
+            background-color: #888;
+            margin: 20px 0;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <div class="menu-bar">
+    <img src="WSLF.png" alt="Logo">
+    <div class="menu-item" onclick="window.location.href='about'">About</div>
+    <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org'">🎵 WSLF</div>
+    <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/kec94'">⛅ KEC94</div>
+    <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wwg41'">⛅ WWG41</div>
+    <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wxl87'">⛅ WXL87</div>
+  </div>
+
+  <div class="content">
+    <h1>NOAA Weather Radio Streams</h1>
+
+    <!-- Info for KEC94 goes here, Do not change info unless absolutely needed. -->
+    <div class="station">
+      <div class="station-header">KEC94 - NOAA Weather Radio</div>
+      <div class="status green">Online</div>
+      <p class="details"><strong>Transmitter Type:</strong> VHF Cell Wireless Transmitter (Installed: February 25, 2025)</p>
+      <p class="details"><strong>Location:</strong> Phoenix, AZ</p>
+      <p class="details"><strong>Streamed With:</strong> RTL-SDR V4 (Installed: January 7, 2024)</p>
+      <p class="description">
+        KEC94 serves the Phoenix Arizona area and operates on a frequency of 162.550 MHz. The transmitter operated by NWS Phoenix and is located on South Mountain, providing wide-area coverage. The station runs on a cell-based wireless transmitter, which was implemented on February 25th, 2025. It has distinct bit-crushed audio effect with a faint 60Hz background hum, which is a normal characteristic of cell-based wireless NOAA transmitters. The travelers forecast is usually played every 15 minutes starting at the top of each hour. We run this stream at our studio in Arizona using an RTL-SDR V4 device we obtained in 2024, and a KB9VBR antenna. These SDR's are picky with reception, and our antenna is not mounted on a roof yet, so factors like wind blowing the very sensitive antenna connecter around, computer usage, lightning, and other factors like people walking right next to the antenna might affect signal perfomrmance. We hope that mounting it on our roof and tying down the connecter to where it can't move and cause static will help solve most of these issues! Our other streams in arizona run on the exact same device so as of now that is a priority.
+      </p>
+    </div>
+
+    <!-- Info for WWG41 goes here, Do not change info unless absolutely needed. -->
+    <div class="station">
+      <div class="station-header">WWG41 - NOAA Weather Radio</div>
+      <div class="status green">Online</div>
+      <p class="details"><strong>Transmitter Type:</strong> VHF Cell Wireless Transmitter</p>
+      <p class="details"><strong>Location:</strong> Payson, AZ</p>
+      <p class="details"><strong>Streamed With:</strong> RTL-SDR V4 (Installed: January 7, 2024)</p>
+      <p class="description">
+        WWG41 serves the Payson Arizona area, even though it's programmed to be a region based station and operates on a frequency of 162.425 MHz. The transmitter operated by NWS Flagstaff and is located on Mount Ord, providing somewhat of a wide-area coverage. The station runs on a cell-based wireless transmitter, which was implemented in April 2023, which replaced one of the worst sounding NWR codecs we have ever heard. As always with these things, it has a distinct bit-crushed audio effect with a faint 60Hz background hum which becomes faintly louder during silence, which is a normal characteristic of cell-based wireless NOAA transmitters. There are no hourly observations or climate summaries for Payson, so we reccomend users to visit weather.gov for the latest weather information in that area. We run this stream at our studio in Arizona using an RTL-SDR V4 device we obtained in 2024, and a KB9VBR antenna. These SDR's are picky with reception, and our antenna is not mounted on a roof yet, so factors like wind blowing the very sensitive antenna connecter around, computer usage, lightning, and other factors like people walking right next to the antenna might affect signal perfomrmance. We hope that mounting it on our roof and tying down the connecter to where it can't move and cause static will help solve most of these issues! Our other streams in arizona run on the exact same device so as of now that is a priority.
+      </p>
+    </div>
+
+    <!-- Info for WWG42 goes here, Do not change info unless absolutely needed. -->
+    <div class="station">
+      <div class="station-header">WWG42 - NOAA Weather Radio</div>
+      <div class="status yellow">Degraded</div>
+      <p class="details"><strong>Transmitter Type:</strong> UHF Wireless Transmitter</p>
+      <p class="details"><strong>Location:</strong> Globe, AZ</p>
+      <p class="details"><strong>Streamed With:</strong> RTL-SDR V4 (Installed: January 7, 2024)</p>
+      <p class="description">
+        WWG42 serves the Globe Arizona area, even though it's programmed to be a region based station and operates on a frequency of 162.500 MHz. The transmitter operated by NWS Phoenix and is located on Signal Peak, providing somewhat of a wide-area coverage, that is, if the station is operating normally. The station runs on a UHF-based wireless transmitter, which was implemented in the 90's. The audio sounds pretty terrible with lots of static in the background from the uplink transmitter, which is a normal characteristic of UHF-based wireless NOAA transmitters. There are no hourly observations or climate summaries for Globe, and the travelers forecast is not included in the broadcast cycle so we reccomend users to visit weather.gov for the latest weather information in that area. We run this stream at our studio in Arizona using an RTL-SDR V4 device we obtained in 2024, and a KB9VBR antenna. These SDR's are picky with reception, and our antenna is not mounted on a roof yet, so factors like wind blowing the very sensitive antenna connecter around, computer usage, lightning, and other factors like people walking right next to the antenna might affect signal perfomrmance. We hope that mounting it on our roof and tying down the connecter to where it can't move and cause static will help solve most of these issues! Our other streams in arizona run on the exact same device so as of now that is a priority.
+      </p>
+    </div>
+
+    <!-- Info for WXL87 goes here, Do not change info unless absolutely needed. -->
+    <div class="station">
+      <div class="station-header">WXL87 - NOAA Weather Radio</div>
+      <div class="status green">Online</div>
+      <p class="details"><strong>Transmitter Type:</strong> VHF Cell Wireless Transmitter</p>
+      <p class="details"><strong>Location:</strong> Yuma, AZ / Imperial Valley, CA</p>
+      <p class="details"><strong>Streamed With:</strong> RTL-SDR V4 (Installed: April 27, 2024)</p>
+      <p class="description">
+        WXL87 serves the Yuma **Arizona** and Imperial Valley California areas and operates on a frequency of 162.550 MHz. The transmitter operated by NWS Phoenix and is located on Black Mountain in California. Range on this transmitter is weak. The station runs on a cell-based wireless transmitter, which was implemented in June 2023. It has distinct bit-crushed audio effect with a faint 60Hz background hum, which is a normal characteristic of cell-based wireless NOAA transmitters. The travelers forecast is usually played every 15 minutes starting at the top of each hour. We run this stream at our studio in California using an RTL-SDR V4 device we obtained in 2024, and a KB9VBR antenna. These SDR's are picky with reception, and Factors like wind blowing the very sensitive antenna connecter around, computer usage, lightning, and other factors like people walking right next to the antenna might affect signal perfomrmance. There is nothing we can do about it on our end.
+      </p>
+    </div>
+
+    <!-- Updates Section -->
+    <div class="updates">
+      <h2>Latest Updates</h2>
+
+      <div class="updates-thingy">
+        <p class="update-date">February 25, 2025</p>
+        <p>In a suprise twist this morning the NOAA Weather Radio transmitter KEC94 in Phoenix has been upgraded to a VHF Cell Wireless system, replacing the older UHF audio codec that had been in service since 2012.</p>
+      </div>
+
+      <div class="updates-thingy">
+        <p class="update-date">February 25, 2025</p>
+        <p>The NOAA Weather Radio Transmitter KEC94 will undergo scheduled maintenance later this morning, Tuesday February 25th 2025. Brief service interruptions are expected. (If its not wireless, we don't want it!!!)</p>
+      </div>
+
+      <div class="updates-thingy">
+        <p class="update-date">January 1, 2025</p>
+        <p>Happy new year! The NWR Streams will be down to day for scheduled computer maintenance this morning. </p>
+      </div>
+      <div class="updates-thingy">
+        <p class="update-date">NWR Stream Outage November 2024 Update 3</p>
+        <p>We have finally fixed our computer! It turned out that our CPU completely died, and repairs have been done to the computer. The NWR streams will be back up soon on most platforms!</p>
+      </div>
+      <div class="updates-thingy">
+        <p class="update-date">NWR Stream Outage November 2024 Update 2</p>
+        <p>The NWR streams are still down, trying to diagnose issues with this computer. Nothing we have done has worked so far, but we suspect it might either be a GPU or cpu issue, or the worst case scenario, a motherboard issue. We hope to get these streams up soon.</p>
+      </div>
+      <div class="updates-thingy">
+        <p class="update-date">NWR Stream Outage November 2024</p>
+        <p>It seems as if our streams went down yesterday, I went to the studio to check on it just to see a frozen boot screen. Despite multipule attempts to fix the issue, nothing has been successful.</p>
+      </div>
+      <div class="updates-thingy">
+        <p class="update-date">WWG42 November 2024 Update</p>
+        <p>There seems to be an issue with the WWG42 transmitter again, if you haven't guess it already, its the volume, again. Attemps to contact NWS Phoenix have been successful, however, they have gone nowhere. These guys don't even know the station is theirs! (They think the Flagstaff office operates it, and doubled down when corrected) We don't think anything will be done with it anytime soon, therefore, we have marked it with a degraded status.</p>
+      </div>
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WSLF Radio NOAA Weather Radio Stream Information</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #333;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+
+        .menu-bar {
+            background-color: #444;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .menu-bar img {
+            width: 50px;
+            margin-right: 20px;
+        }
+
+        .menu-item {
+            margin-right: 20px;
+            cursor: pointer;
+            color: #f0f0f0;
+            text-decoration: none;
+        }
+
+        .menu-item:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            color: #f0f0f0;
+        }
+
+        .station {
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .station-header {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .status {
+            font-size: 16px;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        .status.green {
+            background-color: #4CAF50;
+        }
+
+        .status.yellow {
+            background-color: #FFA500;
+        }
+
+        .status.red {
+            background-color: #FF5252;
+        }
+
+        .details {
+            font-size: 14px;
+            color: #ddd;
+            margin: 5px 0;
+        }
+
+        .description {
+            font-size: 14px;
+            color: #ccc;
+            margin-top: 10px;
+        }
+
+        .updates {
+            margin-top: 40px;
+        }
+
+        .updates-thingy {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .update-date {
+            font-size: 14px;
+            font-weight: bold;
+            color: #ddd;
+        }
+
+        hr {
+            border: none;
+            height: 2px;
+            background-color: #888;
+            margin: 20px 0;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <div class="menu-bar">
+    <img src="WSLF.png" alt="Logo">
+    <div class="menu-item" onclick="window.location.href='about'">About</div>
+    <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org'">🎵 WSLF</div>
+    <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/kec94'">⛅ KEC94</div>
+    <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wwg41'">⛅ WWG41</div>
+    <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wxl87'">⛅ WXL87</div>
+  </div>
+
+  <div class="content">
+    <h1>NOAA Weather Radio Streams</h1>
+
+    <!-- Info for KEC94 goes here, Do not change info unless absolutely needed. -->
+    <div class="station">
+      <div class="station-header">KEC94 - NOAA Weather Radio</div>
+      <div class="status green">Online</div>
+      <p class="details"><strong>Transmitter Type:</strong> VHF Cell Wireless Transmitter (Installed: February 25, 2025)</p>
+      <p class="details"><strong>Location:</strong> Phoenix, AZ</p>
+      <p class="details"><strong>Streamed With:</strong> RTL-SDR V4 (Installed: January 7, 2024)</p>
+      <p class="description">
+        KEC94 serves the Phoenix Arizona area and operates on a frequency of 162.550 MHz. The transmitter operated by NWS Phoenix and is located on South Mountain, providing wide-area coverage. The station runs on a cell-based wireless transmitter, which was implemented on February 25th, 2025. It has distinct bit-crushed audio effect with a faint 60Hz background hum, which is a normal characteristic of cell-based wireless NOAA transmitters. The travelers forecast is usually played every 15 minutes starting at the top of each hour. We run this stream at our studio in Arizona using an RTL-SDR V4 device we obtained in 2024, and a KB9VBR antenna. These SDR's are picky with reception, and our antenna is not mounted on a roof yet, so factors like wind blowing the very sensitive antenna connecter around, computer usage, lightning, and other factors like people walking right next to the antenna might affect signal perfomrmance. We hope that mounting it on our roof and tying down the connecter to where it can't move and cause static will help solve most of these issues! Our other streams in arizona run on the exact same device so as of now that is a priority.
+      </p>
+    </div>
+
+    <!-- Info for WWG41 goes here, Do not change info unless absolutely needed. -->
+    <div class="station">
+      <div class="station-header">WWG41 - NOAA Weather Radio</div>
+      <div class="status green">Online</div>
+      <p class="details"><strong>Transmitter Type:</strong> VHF Cell Wireless Transmitter</p>
+      <p class="details"><strong>Location:</strong> Payson, AZ</p>
+      <p class="details"><strong>Streamed With:</strong> RTL-SDR V4 (Installed: January 7, 2024)</p>
+      <p class="description">
+        WWG41 serves the Payson Arizona area, even though it's programmed to be a region based station and operates on a frequency of 162.425 MHz. The transmitter operated by NWS Flagstaff and is located on Mount Ord, providing somewhat of a wide-area coverage. The station runs on a cell-based wireless transmitter, which was implemented in April 2023, which replaced one of the worst sounding NWR codecs we have ever heard. As always with these things, it has a distinct bit-crushed audio effect with a faint 60Hz background hum which becomes faintly louder during silence, which is a normal characteristic of cell-based wireless NOAA transmitters. There are no hourly observations or climate summaries for Payson, so we reccomend users to visit weather.gov for the latest weather information in that area. We run this stream at our studio in Arizona using an RTL-SDR V4 device we obtained in 2024, and a KB9VBR antenna. These SDR's are picky with reception, and our antenna is not mounted on a roof yet, so factors like wind blowing the very sensitive antenna connecter around, computer usage, lightning, and other factors like people walking right next to the antenna might affect signal perfomrmance. We hope that mounting it on our roof and tying down the connecter to where it can't move and cause static will help solve most of these issues! Our other streams in arizona run on the exact same device so as of now that is a priority.
+      </p>
+    </div>
+
+    <!-- Info for WWG42 goes here, Do not change info unless absolutely needed. -->
+    <div class="station">
+      <div class="station-header">WWG42 - NOAA Weather Radio</div>
+      <div class="status yellow">Degraded</div>
+      <p class="details"><strong>Transmitter Type:</strong> UHF Wireless Transmitter</p>
+      <p class="details"><strong>Location:</strong> Globe, AZ</p>
+      <p class="details"><strong>Streamed With:</strong> RTL-SDR V4 (Installed: January 7, 2024)</p>
+      <p class="description">
+        WWG42 serves the Globe Arizona area, even though it's programmed to be a region based station and operates on a frequency of 162.500 MHz. The transmitter operated by NWS Phoenix and is located on Signal Peak, providing somewhat of a wide-area coverage, that is, if the station is operating normally. The station runs on a UHF-based wireless transmitter, which was implemented in the 90's. The audio sounds pretty terrible with lots of static in the background from the uplink transmitter, which is a normal characteristic of UHF-based wireless NOAA transmitters. There are no hourly observations or climate summaries for Globe, and the travelers forecast is not included in the broadcast cycle so we reccomend users to visit weather.gov for the latest weather information in that area. We run this stream at our studio in Arizona using an RTL-SDR V4 device we obtained in 2024, and a KB9VBR antenna. These SDR's are picky with reception, and our antenna is not mounted on a roof yet, so factors like wind blowing the very sensitive antenna connecter around, computer usage, lightning, and other factors like people walking right next to the antenna might affect signal perfomrmance. We hope that mounting it on our roof and tying down the connecter to where it can't move and cause static will help solve most of these issues! Our other streams in arizona run on the exact same device so as of now that is a priority.
+      </p>
+    </div>
+
+    <!-- Info for WXL87 goes here, Do not change info unless absolutely needed. -->
+    <div class="station">
+      <div class="station-header">WXL87 - NOAA Weather Radio</div>
+      <div class="status green">Online</div>
+      <p class="details"><strong>Transmitter Type:</strong> VHF Cell Wireless Transmitter</p>
+      <p class="details"><strong>Location:</strong> Yuma, AZ / Imperial Valley, CA</p>
+      <p class="details"><strong>Streamed With:</strong> RTL-SDR V4 (Installed: April 27, 2024)</p>
+      <p class="description">
+        WXL87 serves the Yuma **Arizona** and Imperial Valley California areas and operates on a frequency of 162.550 MHz. The transmitter operated by NWS Phoenix and is located on Black Mountain in California. Range on this transmitter is weak. The station runs on a cell-based wireless transmitter, which was implemented in June 2023. It has distinct bit-crushed audio effect with a faint 60Hz background hum, which is a normal characteristic of cell-based wireless NOAA transmitters. The travelers forecast is usually played every 15 minutes starting at the top of each hour. We run this stream at our studio in California using an RTL-SDR V4 device we obtained in 2024, and a KB9VBR antenna. These SDR's are picky with reception, and Factors like wind blowing the very sensitive antenna connecter around, computer usage, lightning, and other factors like people walking right next to the antenna might affect signal perfomrmance. There is nothing we can do about it on our end.
+      </p>
+    </div>
+
+    <!-- Updates Section -->
+    <div class="updates">
+      <h2>Latest Updates</h2>
+
+      <div class="updates-thingy">
+        <p class="update-date">February 25, 2025</p>
+        <p>In a suprise twist this morning the NOAA Weather Radio transmitter KEC94 in Phoenix has been upgraded to a VHF Cell Wireless system, replacing the older UHF audio codec that had been in service since 2012.</p>
+      </div>
+
+      <div class="updates-thingy">
+        <p class="update-date">February 25, 2025</p>
+        <p>The NOAA Weather Radio Transmitter KEC94 will undergo scheduled maintenance later this morning, Tuesday February 25th 2025. Brief service interruptions are expected. (If its not wireless, we don't want it!!!)</p>
+      </div>
+
+      <div class="updates-thingy">
+        <p class="update-date">January 1, 2025</p>
+        <p>Happy new year! The NWR Streams will be down to day for scheduled computer maintenance this morning. </p>
+      </div>
+      <div class="updates-thingy">
+        <p class="update-date">NWR Stream Outage November 2024 Update 3</p>
+        <p>We have finally fixed our computer! It turned out that our CPU completely died, and repairs have been done to the computer. The NWR streams will be back up soon on most platforms!</p>
+      </div>
+      <div class="updates-thingy">
+        <p class="update-date">NWR Stream Outage November 2024 Update 2</p>
+        <p>The NWR streams are still down, trying to diagnose issues with this computer. Nothing we have done has worked so far, but we suspect it might either be a GPU or cpu issue, or the worst case scenario, a motherboard issue. We hope to get these streams up soon.</p>
+      </div>
+      <div class="updates-thingy">
+        <p class="update-date">NWR Stream Outage November 2024</p>
+        <p>It seems as if our streams went down yesterday, I went to the studio to check on it just to see a frozen boot screen. Despite multipule attempts to fix the issue, nothing has been successful.</p>
+      </div>
+      <div class="updates-thingy">
+        <p class="update-date">November 2024 Update</p>
+        <p>This is a periodic update.</p>
+      </div>
+  </div>
+</body>
+</html>
+
+  </div>
+</body>
+</html>
