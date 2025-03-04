@@ -18,12 +18,17 @@
         }
 
         .menu-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
             background-color: #444;
             display: flex;
             justify-content: flex-start;
             align-items: center;
             padding: 10px;
             width: 100%;
+            z-index: 1000;
+            transition: top 0.3s ease-in-out
         }
 
         .menu-bar img {
@@ -211,7 +216,7 @@
 
       <div class="updates-thingy">
         <p class="update-date">January 1, 2025</p>
-        <p>Happy new year! The NWR Streams will be down to day for scheduled computer maintenance this morning.</p>
+        <p>Happy new year! The NWR Streams will be down today for scheduled computer maintenance this morning.</p>
       </div>
       
       <div class="updates-thingy">
@@ -240,9 +245,11 @@
       </div>
       
       <div class="updates-thingy">
-        <p class="update-date">October 1, 2024</p>
-        <p>The WWG42 transmitter has returned to a normal state. Station now marked as normal.</p>
+        <p class="update-date">September 30, 2024</p>
+        <p>The KEC94 transmitter has returned to a normal state. Station now marked as normal.</p>
       </div>
+
+
   </div>
 </body>
 </html>
