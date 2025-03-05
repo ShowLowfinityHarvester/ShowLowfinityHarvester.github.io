@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 - Page Not Found</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     body {
       margin: 0;
       padding: 0;
       font-family: 'Roboto', sans-serif;
-      background-color: #333;
+      background-color: #2a2a2a;
       color: #f0f0f0;
       line-height: 1.6;
       display: flex;
@@ -18,15 +19,112 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .menu-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #3a3a3a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      width: 100%;
+      z-index: 1000;
+      transition: top 0.3s ease-in-out;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .menu-bar img {
+      width: 50px;
+      margin-right: 20px;
+    }
+
+    .menu-item {
+      margin-right: 20px;
+      cursor: pointer;
+      color: #e0e0e0;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .menu-item:hover {
+      background-color: #fff;
+      color: #000;
+    }
+
+    .menu-item i {
+      margin-right: 8px;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-toggle {
+      margin-right: 20px;
+      cursor: pointer;
+      color: #e0e0e0;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .dropdown-toggle:hover {
+      background-color: #fff;
+      color: #000;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: #3a3a3a;
+      min-width: 200px;
+      border-radius: 6px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-item {
+      color: #e0e0e0;
+      padding: 8px 12px;
+      text-decoration: none;
+      display: block;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .dropdown-item:hover {
+      background-color: #fff;
+      color: #000;
     }
 
     .content {
       max-width: 800px;
       text-align: center;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.9);
       padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease-out 0.2s forwards;
     }
 
     .logo img {
@@ -37,29 +135,33 @@
     h1 {
       font-size: 36px;
       color: #f0f0f0;
+      font-weight: 500;
       margin-bottom: 20px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
     }
 
     p {
       font-size: 18px;
-      color: #ccc;
+      color: #d0d0d0;
       margin-bottom: 30px;
     }
 
     a {
       display: inline-block;
       text-decoration: none;
-      color: #fff;
-      background-color: #4CAF50;
+      color: #e0e0e0;
+      background-color: #3a3a3a;
       padding: 10px 20px;
-      border-radius: 4px;
+      border-radius: 6px;
       font-size: 16px;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
+      font-weight: 500;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      margin: 0 10px;
     }
 
     a:hover {
-      background-color: #45a049;
+      background-color: #fff;
+      color: #000;
     }
 
     .background-animation {
@@ -68,7 +170,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle, rgba(0, 0, 0, 0.5), #333);
+      background: radial-gradient(circle, rgba(0, 0, 0, 0.5), #2a2a2a);
       z-index: -1;
       animation: pulse 6s infinite;
     }
@@ -81,9 +183,106 @@
         opacity: 1;
       }
     }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-bar img {
+        width: 40px;
+      }
+
+      .menu-item, .dropdown-toggle {
+        margin-right: 15px;
+        font-size: 14px;
+        padding: 6px 10px;
+      }
+
+      .dropdown-menu {
+        min-width: 180px;
+      }
+
+      .dropdown-item {
+        padding: 6px 10px;
+      }
+
+      .content {
+        padding: 20px;
+        margin: 70px 20px 20px 20px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+
+      a {
+        padding: 8px 16px;
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .menu-item, .dropdown-toggle {
+        margin-right: 10px;
+        font-size: 12px;
+        padding: 5px 8px;
+      }
+
+      .dropdown-menu {
+        min-width: 160px;
+      }
+
+      .dropdown-item {
+        padding: 5px 8px;
+      }
+
+      .content {
+        padding: 15px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      p {
+        font-size: 14px;
+      }
+
+      a {
+        padding: 6px 12px;
+      }
+    }
   </style>
 </head>
 <body>
+  <div class="menu-bar">
+    <div style="display: flex; align-items: center;">
+      <img src="WSLF.png" alt="WSLF Logo">
+      <div class="menu-item" onclick="window.location.href='about'"><i class="fas fa-info-circle"></i> About</div>
+      <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org'"><i class="fas fa-music"></i> WSLF</div>
+      <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/kec94'"><i class="fas fa-cloud-sun"></i> KEC94</div>
+      <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wwg41'"><i class="fas fa-cloud-sun"></i> WWG41</div>
+      <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wxl87'"><i class="fas fa-cloud-sun"></i> WXL87</div>
+    </div>
+    <div class="dropdown">
+      <div class="dropdown-toggle"><i class="fas fa-bars"></i> More</div>
+      <div class="dropdown-menu">
+        <div class="dropdown-item" onclick="window.location.href='status'"><i class="fas fa-signal"></i> Stream Status</div>
+        <div class="dropdown-item" onclick="window.location.href='blog'"><i class="fas fa-blog"></i> Blog</div>
+        <div class="dropdown-item" onclick="window.location.href='coming-soon'"><i class="fas fa-clock"></i> Coming Soon</div>
+        <div class="dropdown-item" onclick="window.location.href='placeholder'"><i class="fas fa-plus"></i> Placeholder</div>
+      </div>
+    </div>
+  </div>
+
   <div class="background-animation"></div>
   <div class="content">
     <div class="logo">
@@ -92,7 +291,7 @@
     <h1>404 - That's an error!</h1>
     <p>Oops! It looks like the page you’re looking for doesn’t exist or has been moved.</p>
     <a href="/">Return to Homepage</a>
-    <a href="https://www.wslfradio.org/status">View Our Status page</a>
+    <a href="https://www.wslfradio.org/status">View Our Status Page</a>
   </div>
 </body>
 </html>
