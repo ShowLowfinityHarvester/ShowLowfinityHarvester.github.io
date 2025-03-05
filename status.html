@@ -10,45 +10,67 @@
       margin: 0;
       padding: 0;
       font-family: 'Roboto', sans-serif;
-      background-color: #333;
+      background-color: #2a2a2a; 
       color: #f0f0f0;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     .content {
       max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.8);
-      border-radius: 8px;
+      margin: 30px auto;
+      padding: 25px;
+      background: rgba(0, 0, 0, 0.9); 
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6); 
+      opacity: 0; 
+      transform: translateY(20px); 
+      animation: fadeInUp 0.8s ease-out forwards; 
     }
 
     h1 {
       text-align: center;
       color: #f0f0f0;
+      font-size: 2.2rem;
+      font-weight: 500;
+      margin-bottom: 25px;
+      opacity: 0; 
+      animation: fadeIn 1s ease-out 0.2s forwards; 
     }
 
     .station-status {
       padding: 20px;
       margin: 15px 0;
       border-radius: 8px;
-      background-color: #444;
+      background-color: #3a3a3a; 
+      border-left: 4px solid #555; 
+      opacity: 0; 
+      transform: translateX(-20px); 
+      animation: slideIn 0.6s ease-out forwards; 
     }
+
+    
+    .station-status:nth-child(2) { animation-delay: 0.2s; }
+    .station-status:nth-child(3) { animation-delay: 0.4s; }
+    .station-status:nth-child(4) { animation-delay: 0.6s; }
+    .station-status:nth-child(5) { animation-delay: 0.8s; }
 
     .station-name {
       font-size: 24px;
       font-weight: 500;
       margin-bottom: 10px;
+      color: #e0e0e0; 
     }
 
     .status {
       font-size: 18px;
       font-weight: bold;
-      padding: 10px;
-      border-radius: 4px;
+      padding: 8px 16px;
+      border-radius: 6px;
       color: #fff;
       margin-bottom: 10px;
       display: inline-block;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); 
     }
 
     .status.green {
@@ -64,8 +86,60 @@
 
     .description {
       font-size: 14px;
-      color: #ccc;
+      color: #d0d0d0; 
       margin-top: 5px;
+    }
+
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    
+    @media (max-width: 768px) {
+      .content {
+        margin: 20px;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .station-name {
+        font-size: 20px;
+      }
+
+      .status {
+        font-size: 16px;
+        padding: 6px 12px;
+      }
+
+      .description {
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .station-status {
+        padding: 15px;
+      }
     }
   </style>
 </head>
@@ -73,7 +147,6 @@
   <div class="content">
     <h1>Stream Status</h1>
 
-    
     <div class="station-status">
       <div class="station-name">WSLF Radio</div>
       <div class="status red">Offline</div>
@@ -82,7 +155,6 @@
       </p>
     </div>
 
-    
     <div class="station-status">
       <div class="station-name">KEC94 Stream</div>
       <div class="status green">Online</div>
@@ -90,7 +162,6 @@
         The KEC94 stream is fully operational!
       </p>
     </div>
-
 
     <div class="station-status">
       <div class="station-name">WWG41 Stream</div>
@@ -100,17 +171,14 @@
       </p>
     </div>
 
-    
     <div class="station-status">
       <div class="station-name">WWG42 Stream</div>
       <div class="status green">Online</div>
       <p class="description">
         The WWG42 stream is fully operational!
-        
       </p>
     </div>
-    
-       
+
     <div class="station-status">
       <div class="station-name">WXL87 Stream</div>
       <div class="status green">Online</div>
