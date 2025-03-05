@@ -6,29 +6,37 @@
     <meta property="og:title" content="WSLF Radio NWR Network Status">
     <meta property="og:description" content="Are any of the WSLF NWR streams experiencing any issues? You can check here by clicking on me.">
     <meta property="og:image" content="https://wslf-radio.neocities.org/WSLF_Transparent.png">
-    <title>WSLF Radio NWR Netowk Status</title>
+    <title>WSLF Radio NWR Network Status</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Roboto', sans-serif;
-            background-color: #333;
+            background-color: #2a2a2a;
             color: #f0f0f0;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .menu-bar {
             position: fixed;
             top: 0;
             left: 0;
-            background-color: #444;
+            background-color: #3a3a3a;
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-between;
             align-items: center;
             padding: 10px;
             width: 100%;
             z-index: 1000;
-            transition: top 0.3s ease-in-out
+            transition: top 0.3s ease-in-out;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInUp 0.8s ease-out forwards;
         }
 
         .menu-bar img {
@@ -39,46 +47,131 @@
         .menu-item {
             margin-right: 20px;
             cursor: pointer;
-            color: #f0f0f0;
+            color: #e0e0e0;
             text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .menu-item:hover {
-            text-decoration: underline;
+            background-color: #fff;
+            color: #000;
+        }
+
+        .menu-item i {
+            margin-right: 8px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-toggle {
+            margin-right: 20px;
+            cursor: pointer;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-toggle:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #3a3a3a;
+            min-width: 200px;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-item {
+            color: #e0e0e0;
+            padding: 8px 12px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #fff;
+            color: #000;
         }
 
         .content {
             max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 8px;
+            margin: 80px auto 30px auto; /* Adjusted for fixed menu-bar */
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out forwards;
         }
 
         h1, h2, h3 {
             text-align: center;
             color: #f0f0f0;
+            font-size: 2.2rem;
+            font-weight: 500;
+            margin-bottom: 25px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.2s forwards;
+        }
+
+        h2 {
+            font-size: 1.8rem;
         }
 
         .station {
             padding: 20px;
             margin: 15px 0;
             border-radius: 8px;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: #3a3a3a;
+            border-left: 4px solid #555;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideIn 0.6s ease-out forwards;
         }
 
+        .station:nth-child(2) { animation-delay: 0.2s; }
+        .station:nth-child(3) { animation-delay: 0.4s; }
+        .station:nth-child(4) { animation-delay: 0.6s; }
+        .station:nth-child(5) { animation-delay: 0.8s; }
+
         .station-header {
-            font-size: 22px;
-            font-weight: bold;
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #e0e0e0;
         }
 
         .status {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: bold;
-            padding: 8px 12px;
-            border-radius: 4px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            color: #fff;
+            margin-bottom: 10px;
             display: inline-block;
-            margin: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .status.green {
@@ -95,13 +188,13 @@
 
         .details {
             font-size: 14px;
-            color: #ddd;
+            color: #d0d0d0;
             margin: 5px 0;
         }
 
         .description {
             font-size: 14px;
-            color: #ccc;
+            color: #d0d0d0;
             margin-top: 10px;
         }
 
@@ -111,55 +204,157 @@
 
         .updates-thingy {
             padding: 15px;
-            background: rgba(255, 255, 255, 0.1);
+            background: #3a3a3a;
             border-radius: 8px;
             margin-bottom: 15px;
+            border-left: 4px solid #555;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideIn 0.6s ease-out forwards;
         }
+
+        .updates-thingy:nth-child(2) { animation-delay: 0.2s; }
+        .updates-thingy:nth-child(3) { animation-delay: 0.4s; }
+        .updates-thingy:nth-child(4) { animation-delay: 0.6s; }
+        .updates-thingy:nth-child(5) { animation-delay: 0.8s; }
+        .updates-thingy:nth-child(6) { animation-delay: 1.0s; }
+        .updates-thingy:nth-child(7) { animation-delay: 1.2s; }
+        .updates-thingy:nth-child(8) { animation-delay: 1.4s; }
+        .updates-thingy:nth-child(9) { animation-delay: 1.6s; }
+        .updates-thingy:nth-child(10) { animation-delay: 1.8s; }
 
         .update-date {
             font-size: 14px;
-            font-weight: bold;
-            color: #ddd;
+            font-weight: 500;
+            color: #e0e0e0;
         }
 
         hr {
             border: none;
             height: 2px;
-            background-color: #888;
+            background-color: #555;
             margin: 20px 0;
             width: auto;
             margin-left: auto;
             margin-right: auto;
         }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                margin: 70px 20px 20px 20px;
+                padding: 20px;
+            }
+
+            h1, h2, h3 {
+                font-size: 1.8rem;
+            }
+
+            .station-header {
+                font-size: 20px;
+            }
+
+            .status {
+                font-size: 16px;
+                padding: 6px 12px;
+            }
+
+            .details {
+                font-size: 13px;
+            }
+
+            .description {
+                font-size: 13px;
+            }
+
+            .update-date {
+                font-size: 13px;
+            }
+
+            .menu-bar img {
+                width: 40px;
+            }
+
+            .menu-item {
+                margin-right: 15px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .station {
+                padding: 15px;
+            }
+
+            .updates-thingy {
+                padding: 12px;
+            }
+
+            .menu-bar img {
+                width: 40px;
+            }
+
+            .menu-item {
+                margin-right: 10px;
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 <body>
-  <!-- Menu BAr -->
-  <div class="menu-bar">
-    <img src="WSLF.png" alt="Logo">
-    <div class="menu-item" onclick="window.location.href='about'">About</div>
-    <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org'">🎵 WSLF</div>
-    <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/kec94'">⛅ KEC94</div>
-    <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wwg41'">⛅ WWG41</div>
-    <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wxl87'">⛅ WXL87</div>
+<div class="menu-bar">
+    <div style="display: flex; align-items: center;">
+      <img src="WSLF.png" alt="WSLF Logo">
+      <div class="menu-item" onclick="window.location.href='about'"><i class="fas fa-info-circle"></i> About</div>
+      <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org'"><i class="fas fa-music"></i> WSLF</div>
+      <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/kec94'"><i class="fas fa-cloud-sun"></i> KEC94</div>
+      <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wwg41'"><i class="fas fa-cloud-sun"></i> WWG41</div>
+      <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wxl87'"><i class="fas fa-cloud-sun"></i> WXL87</div>
+    </div>
+    <div class="dropdown">
+      <div class="dropdown-toggle"><i class="fas fa-bars"></i> More</div>
+      <div class="dropdown-menu">
+        <div class="dropdown-item" onclick="window.location.href='status'"><i class="fas fa-signal"></i> Stream Status</div>
+        <div class="dropdown-item" onclick="window.location.href='blog'"><i class="fas fa-blog"></i> Blog</div>
+        <div class="dropdown-item" onclick="window.location.href='coming-soon'"><i class="fas fa-clock"></i> Coming Soon</div>
+        <div class="dropdown-item" onclick="window.location.href='placeholder'"><i class="fas fa-plus"></i> Placeholder</div>
+      </div>
+    </div>
   </div>
 
   <div class="content">
     <h1>NOAA Weather Radio Streams</h1>
 
-    <!-- Info for KEC94 goes here, Do not change info unless absolutely needed. -->
     <div class="station">
       <div class="station-header">KEC94 - NOAA Weather Radio</div>
       <div class="status green">Online</div>
-      <p class="details"><strong>Transmitter Type:</strong> VHF Cell Wireless Transmitter (Installed: February 25, 2025)</p>
+      <p class="details"><strong>Transmitter Type:</strong> VHF Cell Wireless Transmitter</p>
       <p class="details"><strong>Location:</strong> Phoenix, AZ</p>
       <p class="details"><strong>Streamed With:</strong> RTL-SDR V4 (Installed: January 7, 2024)</p>
       <p class="description">
-        KEC94 serves the Phoenix Arizona area and operates on a frequency of 162.550 MHz. The transmitter operated by NWS Phoenix and is located on South Mountain, providing wide-area coverage. The station runs on a cell-based wireless transmitter, which was implemented on February 25th, 2025. It has distinct bit-crushed audio effect with a faint 60Hz background hum, which is a normal characteristic of cell-based wireless NOAA transmitters. The travelers forecast is usually played every 15 minutes starting at the top of each hour. We run this stream at our studio in Arizona using an RTL-SDR V4 device we obtained in 2024, and a KB9VBR antenna. These SDR's are picky with reception, and our antenna is not mounted on a roof yet, so factors like wind blowing the very sensitive antenna connecter around, computer usage, lightning, and other factors like people walking right next to the antenna might affect signal perfomrmance. We hope that mounting it on our roof and tying down the connecter to where it can't move and cause static will help solve most of these issues! Our other streams in arizona run on the exact same device so as of now that is a priority.
+        KEC94 broadcasts to the Phoenix, Arizona area on 162.550 MHz. Operated by NWS Phoenix, it’s located on South Mountain. Upgraded to a VHF cell wireless transmitter on February 25, 2025, it features a characteristic bit-crushed sound with a faint 60Hz background noise. Travelers’ forecasts are broadcast every 15 minutes from the hour’s start. This stream originates from our Arizona studio using an RTL-SDR V4 (acquired 2024) and a KB9VBR antenna. Reception can be finicky, wind, computer use, lightning, or nearby movement may disrupt the signal since the antenna isn’t roof-mounted yet (It hasn't been for 10 months). Securing it should resolve most issues, a priority for all our Arizona streams sharing this setup.
       </p>
     </div>
 
-    <!-- Info for WWG41 goes here, Do not change info unless absolutely needed. -->
     <div class="station">
       <div class="station-header">WWG41 - NOAA Weather Radio</div>
       <div class="status green">Online</div>
@@ -167,11 +362,10 @@
       <p class="details"><strong>Location:</strong> Payson, AZ</p>
       <p class="details"><strong>Streamed With:</strong> RTL-SDR V4 (Installed: January 7, 2024)</p>
       <p class="description">
-        WWG41 serves the Payson Arizona area, even though it's programmed to be a region based station and operates on a frequency of 162.425 MHz. The transmitter operated by NWS Flagstaff and is located on Mount Ord, providing somewhat of a wide-area coverage. The station runs on a cell-based wireless transmitter, which was implemented in April 2023, which replaced one of the worst sounding NWR codecs we have ever heard. As always with these things, it has a distinct bit-crushed audio effect with a faint 60Hz background hum which becomes faintly louder during silence, which is a normal characteristic of cell-based wireless NOAA transmitters. There are no hourly observations or climate summaries for Payson, so we reccomend users to visit weather.gov for the latest weather information in that area. We run this stream at our studio in Arizona using an RTL-SDR V4 device we obtained in 2024, and a KB9VBR antenna. These SDR's are picky with reception, and our antenna is not mounted on a roof yet, so factors like wind blowing the very sensitive antenna connecter around, computer usage, lightning, and other factors like people walking right next to the antenna might affect signal perfomrmance. We hope that mounting it on our roof and tying down the connecter to where it can't move and cause static will help solve most of these issues! Our other streams in arizona run on the exact same device so as of now that is a priority.
+        WWG41 covers the Payson, Arizona region on 162.425 MHz, operated by NWS Flagstaff from Mount Ord. It switched to a VHF cell wireless transmitter in April 2023, replacing a notoriously poor codec. Expect bit-crushed audio and a subtle 60Hz hum, louder during quiet moments—typical for this tech. No hourly observations for Payson or climate summaries are broadcast, so we reccomend to check weather.gov for all of that info. Streamed from our Arizona studio with an RTL-SDR V4 (2024) and KB9VBR antenna, it shares the same reception challenges as KEC94. Roof-mounting the antenna is our next step to stabilize the signal.
       </p>
     </div>
 
-    <!-- Info for WWG42 goes here, Do not change info unless absolutely needed. -->
     <div class="station">
       <div class="station-header">WWG42 - NOAA Weather Radio</div>
       <div class="status yellow">Degraded</div>
@@ -179,11 +373,10 @@
       <p class="details"><strong>Location:</strong> Globe, AZ</p>
       <p class="details"><strong>Streamed With:</strong> RTL-SDR V4 (Installed: January 7, 2024)</p>
       <p class="description">
-        WWG42 serves the Globe Arizona area, even though it's programmed to be a region based station and operates on a frequency of 162.500 MHz. The transmitter operated by NWS Phoenix and is located on Signal Peak, providing somewhat of a wide-area coverage, that is, if the station is operating normally. The station runs on a UHF-based wireless transmitter, which was implemented in the 90's. The audio sounds pretty terrible with lots of static in the background from the uplink transmitter, which is a normal characteristic of UHF-based wireless NOAA transmitters. There are no hourly observations or climate summaries for Globe, and the travelers forecast is not included in the broadcast cycle so we reccomend users to visit weather.gov for the latest weather information in that area. We run this stream at our studio in Arizona using an RTL-SDR V4 device we obtained in 2024, and a KB9VBR antenna. These SDR's are picky with reception, and our antenna is not mounted on a roof yet, so factors like wind blowing the very sensitive antenna connecter around, computer usage, lightning, and other factors like people walking right next to the antenna might affect signal perfomrmance. We hope that mounting it on our roof and tying down the connecter to where it can't move and cause static will help solve most of these issues! Our other streams in arizona run on the exact same device so as of now that is a priority.
+        WWG42 serves the Globe, Arizona region on 162.500 MHz, operated by NWS Phoenix from Signal Peak. It broadcasts on a UHF wireless transmitter, installed in the 90s, it delivers very poor audio with heavy background static. Coverage is spotty, and it lacks hourly observations for the globe area, climate summaries, and the PSR travelers’ forecast. Visit weather.gov for all of that info. Streamed from our Arizona studio with an RTL-SDR V4 (2024) and KB9VBR antenna, it faces the same reception issues as our other streams. Roof-mounting remains a priority to reduce interference.
       </p>
     </div>
 
-    <!-- Info for WXL87 goes here, Do not change info unless absolutely needed. -->
     <div class="station">
       <div class="station-header">WXL87 - NOAA Weather Radio</div>
       <div class="status green">Online</div>
@@ -191,11 +384,10 @@
       <p class="details"><strong>Location:</strong> Yuma, AZ / Imperial Valley, CA</p>
       <p class="details"><strong>Streamed With:</strong> RTL-SDR V4 (Installed: April 27, 2024)</p>
       <p class="description">
-        WXL87 serves the Yuma **Arizona** and Imperial Valley California areas and operates on a frequency of 162.550 MHz. The transmitter operated by NWS Phoenix and is located on Black Mountain in California. Range on this transmitter is weak. The station runs on a cell-based wireless transmitter, which was implemented in June 2023. It has distinct bit-crushed audio effect with a faint 60Hz background hum, which is a normal characteristic of cell-based wireless NOAA transmitters. The travelers forecast is usually played every 15 minutes starting at the top of each hour. We run this stream at our studio in California using an RTL-SDR V4 device we obtained in 2024, and a KB9VBR antenna. These SDR's are picky with reception, and Factors like wind blowing the very sensitive antenna connecter around, computer usage, lightning, and other factors like people walking right next to the antenna might affect signal perfomrmance. There is nothing we can do about it on our end.
+        WXL87 broadcasts to Yuma, Arizona, and Imperial Valley, California, on 162.550 MHz. Operated by NWS Phoenix from Black Mountain, CA, its VHF cell wireless transmitter (installed June 2023) has limited range for the area it serves but offers bit-crushed audio and a 60Hz hum. Travelers’ forecasts play every 15 minutes from the hour. Streamed from our California studio with an RTL-SDR V4 (2024) and KB9VBR antenna, signal quality varies due to environmental factors like wind or lightning. Transmitter range and signal interference is a major problem here but we are working the best we can to resolve this issue..
       </p>
     </div>
 
-    <!-- Updates Go Here -->
     <div class="updates">
       <h2>Latest Updates</h2>
 
@@ -206,7 +398,7 @@
 
       <div class="updates-thingy">
         <p class="update-date">February 25, 2025</p>
-        <p>In a suprise twist this morning, the NOAA Weather Radio transmitter KEC94 in Phoenix has been upgraded to a VHF Cell Wireless system, replacing the older UHF audio codec that had been in service since 2012.</p>
+        <p>In a surprise twist this morning, the NOAA Weather Radio transmitter KEC94 in Phoenix has been upgraded to a VHF Cell Wireless system, replacing the older UHF audio codec that had been in service since 2012.</p>
       </div>
 
       <div class="updates-thingy">
@@ -248,8 +440,7 @@
         <p class="update-date">September 30, 2024</p>
         <p>The KEC94 transmitter has returned to a normal state. Station now marked as normal.</p>
       </div>
-
-
+    </div>
   </div>
 </body>
 </html>
