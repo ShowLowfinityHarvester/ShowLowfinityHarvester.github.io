@@ -27,7 +27,7 @@
       left: 0;
       background-color: #3a3a3a;
       display: flex;
-      justify-content: space-between; /* Pushes dropdown to the right */
+      justify-content: space-between;
       align-items: center;
       padding: 10px;
       width: 100%;
@@ -44,6 +44,13 @@
       margin-right: 20px;
     }
 
+    .menu-items {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      overflow: hidden;
+    }
+
     .menu-item {
       margin-right: 20px;
       cursor: pointer;
@@ -53,18 +60,18 @@
       padding: 8px 12px;
       border-radius: 6px;
       transition: background-color 0.3s ease, color 0.3s ease;
+      white-space: nowrap;
     }
 
     .menu-item:hover {
-      background-color: #fff; 
-      color: #000; 
+      background-color: #fff;
+      color: #000;
     }
 
     .menu-item i {
       margin-right: 8px;
     }
 
-    
     .dropdown {
       position: relative;
       display: inline-block;
@@ -181,19 +188,22 @@
   <div class="menu-bar">
     <div style="display: flex; align-items: center;">
       <img src="WSLF.png" alt="Logo">
-      <div class="menu-item" onclick="window.location.href='about'"><i class="fas fa-info-circle"></i> About</div>
-      <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/kec94'"><i class="fas fa-cloud-sun"></i> KEC94</div>
-      <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wwg41'"><i class="fas fa-cloud-sun"></i> WWG41</div>
-      <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wxl87'"><i class="fas fa-cloud-sun"></i> WXL87</div>
-      <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/portfolio/index'"><i class="fas fa-tools"></i> Portfolio Page For East Valley (Under Construction)</div>
+      <div class="menu-items">
+        <div class="menu-item" onclick="window.location.href='about'"><i class="fas fa-info-circle"></i> About</div>
+        <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org'"><i class="fas fa-music"></i> WSLF</div>
+        <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/kec94'"><i class="fas fa-cloud-sun"></i> KEC94</div>
+        <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wwg41'"><i class="fas fa-cloud-sun"></i> WWG41</div>
+        <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wxl87'"><i class="fas fa-cloud-sun"></i> WXL87</div>
+        <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/portfolio/index'"><i class="fas fa-tools"></i> Portfolio Page For East Valley (Under Construction)</div>
+      </div>
     </div>
     <div class="dropdown">
       <div class="dropdown-toggle"><i class="fas fa-bars"></i> More</div>
-      <div class="dropdown-menu">
-        <div class="dropdown-item" onclick="window.location.href='status'"><i class="fas fa-signal"></i> Stream Status</div>
-        <div class="dropdown-item" onclick="window.location.href='blog'"><i class="fas fa-blog"></i> Blog</div>
-        <div class="dropdown-item" onclick="window.location.href='coming-soon'"><i class="fas fa-clock"></i> Coming Soon</div>
-        <div class="dropdown-item" onclick="window.location.href='placeholder'"><i class="fas fa-plus"></i> Placeholder</div>
+      <div class="dropdown-menu" id="dropdown-menu">
+        <div class="dropdown-item static-item" onclick="window.location.href='status'"><i class="fas fa-signal"></i> Stream Status</div>
+        <div class="dropdown-item static-item" onclick="window.location.href='blog'"><i class="fas fa-blog"></i> Blog</div>
+        <div class="dropdown-item static-item" onclick="window.location.href='coming-soon'"><i class="fas fa-clock"></i> Coming Soon</div>
+        <div class="dropdown-item static-item" onclick="window.location.href='placeholder'"><i class="fas fa-plus"></i> Placeholder</div>
       </div>
     </div>
   </div>
@@ -205,6 +215,7 @@
   </div>
 
   <script>
+    // This is the radio script
     const m3uPlaylistUrl = "WSLF.m3u";
     const audioPlayer = document.getElementById("player");
 
@@ -229,6 +240,49 @@
       .catch(error => {
         console.error("Error fetching the M3U playlist:", error);
       });
+
+    // this code is for mobile users and those with tiny screens for whatever reason
+    const menuItemsContainer = document.querySelector('.menu-items');
+    const dropdownMenu = document.querySelector('#dropdown-menu');
+    const menuItems = Array.from(document.querySelectorAll('.menu-item'));
+    const staticDropdownItems = Array.from(document.querySelectorAll('.dropdown-item.static-item'));
+    let movedItems = new Map(); // track moved items by oneclick attributes
+
+    function adjustMenuForMobile() {
+      const menuBarRect = document.querySelector('.menu-bar').getBoundingClientRect();
+      const dropdownRect = document.querySelector('.dropdown').getBoundingClientRect();
+      const maxVisibleX = menuBarRect.width - dropdownRect.width - 20; // dropdown width
+
+      // if item fits, restore it back and get rid of clone because wr do not want duplicates here
+      movedItems.forEach((clone, onclick) => {
+        const originalItem = menuItems.find(item => item.getAttribute('onclick') === onclick);
+        if (originalItem) {
+          const cloneRect = clone.getBoundingClientRect();
+          if (cloneRect.right <= maxVisibleX && cloneRect.left >= 0) {
+            menuItemsContainer.appendChild(originalItem);
+            clone.remove();
+            movedItems.delete(onclick);
+          }
+        }
+      });
+
+      // items go into dropdown menu if a button not visible
+      menuItems.forEach(item => {
+        const itemRect = item.getBoundingClientRect();
+        if (itemRect.right > maxVisibleX || itemRect.left < 0) {
+          const clone = item.cloneNode(true);
+          clone.classList.add('dropdown-item');
+          clone.classList.remove('menu-item');
+          dropdownMenu.appendChild(clone);
+          movedItems.set(item.getAttribute('onclick'), clone);
+          item.remove();
+        }
+      });
+    }
+
+    // js for loading and resizing
+    window.addEventListener('load', adjustMenuForMobile);
+    window.addEventListener('resize', adjustMenuForMobile);
   </script>
 </body>
 </html>
