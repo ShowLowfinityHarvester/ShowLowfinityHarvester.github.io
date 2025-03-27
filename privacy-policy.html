@@ -1,93 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WSLF Radio - Privacy Policy</title>
-  <link rel="icon" href="WSLF_Transparent.png">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex"> <!-- Prevent search engines from indexing -->
+    <title>WSLF Radio - Privacy Policy</title>
+    <link rel="icon" href="WSLF_Transparent.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #2a2a2a;
+            color: #f0f0f0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: #333;
-      color: #f0f0f0;
-      line-height: 1.6;
-    }
+        .menu-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #3a3a3a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            width: 100%;
+            z-index: 1000;
+            transition: top 0.3s ease-in-out;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
 
-    .menu-bar {
-      background-color: #222;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-    }
+        .menu-bar img {
+            width: 50px;
+            margin-right: 20px;
+        }
 
-    .menu-bar img {
-      width: 40px;
-      margin-right: 15px;
-    }
+        .menu-item {
+            margin-right: 20px;
+            cursor: pointer;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
-    .menu-item {
-      font-weight: 500;
-      color: #ccc;
-      margin-right: 20px;
-      cursor: pointer;
-    }
+        .menu-item:hover {
+            background-color: #fff;
+            color: #000;
+        }
 
-    .content {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.8);
-      border-radius: 8px;
-      text-align: left;
-    }
+        .menu-item i {
+            margin-right: 8px;
+        }
 
-    h1, p {
-      margin: 10px 0;
-    }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
 
-    a {
-      color: #4e9af1;
-    }
-  </style>
+        .dropdown-toggle {
+            margin-right: 20px;
+            cursor: pointer;
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-toggle:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #3a3a3a;
+            min-width: 200px;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-item {
+            color: #e0e0e0;
+            padding: 8px 12px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 80px auto 30px auto;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+            text-align: left;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+
+        .header-section {
+            border-bottom: 2px solid #555;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: #f0f0f0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            color: #d0d0d0;
+            margin: 15px 0;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #e0e0e0;
+            margin: 20px 0 10px 0;
+            border-left: 4px solid #555;
+            padding-left: 10px;
+        }
+
+        .links-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        a {
+            color: #4e9af1;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .disclaimer {
+            font-size: 0.9rem;
+            color: #b0b0b0;
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            margin: 0 10px;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-bar img {
+                width: 40px;
+            }
+
+            .menu-item, .dropdown-toggle {
+                margin-right: 15px;
+                font-size: 14px;
+                padding: 6px 10px;
+            }
+
+            .dropdown-menu {
+                min-width: 180px;
+            }
+
+            .dropdown-item {
+                padding: 6px 10px;
+            }
+
+            .content {
+                margin: 70px 20px 20px 20px;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .intro-text {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .links-section {
+                gap: 10px;
+            }
+
+            a {
+                padding: 5px 10px;
+            }
+
+            .disclaimer {
+                font-size: 0.85rem;
+            }
+
+            footer {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .menu-item, .dropdown-toggle {
+                margin-right: 10px;
+                font-size: 12px;
+                padding: 5px 8px;
+            }
+
+            .dropdown-menu {
+                min-width: 160px;
+            }
+
+            .dropdown-item {
+                padding: 5px 8px;
+            }
+
+            .content {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .intro-text {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+
+            .links-section {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            a {
+                padding: 4px 8px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="menu-bar">
-    <img src="WSLF.png" alt="WSLF Logo">
-    <div class="menu-item" onclick="window.location.href='about'">About</div>
-    <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/kec94'">⛅ KEC94</div>
-    <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wwg41'">⛅ WWG41</div>
-    <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wxl87'">⛅ WXL87</div>
-  </div>
+    <div class="menu-bar">
+        <div style="display: flex; align-items: center;">
+            <img src="WSLF.png" alt="WSLF Logo">
+            <div class="menu-item" onclick="window.location.href='about'"><i class="fas fa-info-circle"></i> About</div>
+            <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/kec94'"><i class="fas fa-cloud-sun"></i> KEC94</div>
+            <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wwg41'"><i class="fas fa-cloud-sun"></i> WWG41</div>
+            <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wxl87'"><i class="fas fa-cloud-sun"></i> WXL87</div>
+        </div>
+        <div class="dropdown">
+            <div class="dropdown-toggle"><i class="fas fa-bars"></i> More</div>
+            <div class="dropdown-menu">
+                <div class="dropdown-item" onclick="window.location.href='status'"><i class="fas fa-signal"></i> Stream Status</div>
+                <div class="dropdown-item" onclick="window.location.href='blog'"><i class="fas fa-blog"></i> Blog</div>
+                <div class="dropdown-item" onclick="window.location.href='coming-soon'"><i class="fas fa-clock"></i> Coming Soon</div>
+                <div class="dropdown-item" onclick="window.location.href='placeholder'"><i class="fas fa-plus"></i> Placeholder</div>
+            </div>
+        </div>
+    </div>
 
-  <div class="content">
-    <h1>Privacy Policy</h1>
-    <p>Your privacy is important to us at WSLF Radio. This privacy policy outlines how we handle your information when you visit our site or use our services.</p>
+    <div class="content">
+        <div class="header-section">
+            <h1>Privacy Policy</h1>
+            <p class="intro-text">Your privacy is important to us at WSLF Radio.</p>
+        </div>
+        <p class="intro-text">This privacy policy outlines how we handle your information when you visit our site or use our services.</p>
 
-    <h2>Information We Collect</h2>
-    <p>We do not collect any personal information from users automatically. There are no data trackers, cookies, or analytics tools in use on our website. The only information we collect is what you voluntarily provide through forms, such as song requests, ban appeals, or other submissions.</p>
+        <h2 class="section-title">Information We Collect</h2>
+        <p class="intro-text">We do not collect any personal information from users automatically. There are no data trackers, cookies, or analytics tools in use on our website. The only information we collect is what you voluntarily provide through forms, such as song requests, ban appeals, or other submissions.</p>
 
-    <h2>How We Use Information</h2>
-    <p>The information you provide is used solely for the purpose of fulfilling your request, such as processing song requests or addressing ban appeals. We do not share, sell, or disclose your information to third parties.</p>
+        <h2 class="section-title">How We Use Information</h2>
+        <p class="intro-text">The information you provide is used solely for the purpose of fulfilling your request, such as processing song requests or addressing ban appeals. We do not share, sell, or disclose your information to third parties.</p>
 
-    <h2>Third-Party Services</h2>
-    <p>WSLF Radio does not use any third-party services that collect data from our users. Any external links on our site may lead to sites with their own privacy policies. We encourage you to review their policies before providing information.</p>
+        <h2 class="section-title">Third-Party Services</h2>
+        <p class="intro-text">WSLF Radio does not use any third-party services that collect data from our users. Any external links on our site may lead to sites with their own privacy policies. We encourage you to review their policies before providing information.</p>
 
-    <h2>Data Retention</h2>
-    <p>Information submitted through forms is retained only as long as necessary to fulfill the purpose of the request. Once it is no longer needed, the data is securely deleted.</p>
+        <h2 class="section-title">Data Retention</h2>
+        <p class="intro-text">Information submitted through forms is retained only as long as necessary to fulfill the purpose of the request. Once it is no longer needed, the data is securely deleted.</p>
 
-    <h2>Your Rights</h2>
-    <p>If you have submitted information to us and wish to have it deleted or inquire about what data we have, you can contact us via the appropriate communication channel provided on our site.</p>
+        <h2 class="section-title">Your Rights</h2>
+        <p class="intro-text">If you have submitted information to us and wish to have it deleted or inquire about what data we have, you can contact us via the appropriate communication channel provided on our site.</p>
 
-    <h2>Updates to This Policy</h2>
-    <p>We may update this privacy policy from time to time. Any changes will be posted on this page with the updated date. Please review this page periodically for updates. Valid (12/09/24)</p>
+        <h2 class="section-title">Updates to This Policy</h2>
+        <p class="intro-text">We may update this privacy policy from time to time. Any changes will be posted on this page with the updated date. Please review this page periodically for updates. Valid (12/09/24)</p>
 
-    <footer>
-      <p><a href="/about.html">About</a> | <a href="https://twitter.com/jdeas15">Twitter</a> | <a href="/legal.html">Legal</a></p>
-    </footer>
-  </div>
+        <footer>
+            <p>
+                <a href="/about.html">About</a> |
+                <a href="https://twitter.com/jdeas15">Twitter</a> |
+                <a href="/legal.html">Legal</a>
+            </p>
+        </footer>
+    </div>
 </body>
 </html>
