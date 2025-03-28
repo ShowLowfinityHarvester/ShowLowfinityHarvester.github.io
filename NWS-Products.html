@@ -413,19 +413,19 @@
             document.getElementById('menu-frame').style.display = 'block';
         }
 
-        // Mobile menu adjustments
+        
         const menuItemsContainer = document.querySelector('.menu-items');
         const dropdownMenu = document.querySelector('#dropdown-menu');
         const menuItems = Array.from(document.querySelectorAll('.menu-item'));
         const staticDropdownItems = Array.from(document.querySelectorAll('.dropdown-item.static-item'));
-        let movedItems = new Map(); // Track moved items by onclick attributes
+        let movedItems = new Map(); 
 
         function adjustMenuForMobile() {
             const menuBarRect = document.querySelector('.menu-bar').getBoundingClientRect();
             const dropdownRect = document.querySelector('.dropdown').getBoundingClientRect();
-            const maxVisibleX = menuBarRect.width - dropdownRect.width - 20; // Dropdown width and padding
+            const maxVisibleX = menuBarRect.width - dropdownRect.width - 20; 
 
-            // If item fits, restore it back and remove clone to avoid duplicates
+            
             movedItems.forEach((clone, onclick) => {
                 const originalItem = menuItems.find(item => item.getAttribute('onclick') === onclick);
                 if (originalItem) {
@@ -438,7 +438,7 @@
                 }
             });
 
-            // Move items to dropdown menu if they are not visible
+            
             menuItems.forEach(item => {
                 const itemRect = item.getBoundingClientRect();
                 if (itemRect.right > maxVisibleX || itemRect.left < 0) {
@@ -452,7 +452,7 @@
             });
         }
 
-        // Run on load and resize
+        
         window.addEventListener('load', adjustMenuForMobile);
         window.addEventListener('resize', adjustMenuForMobile);
     </script>
