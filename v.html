@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="WSLF Radio Music Review - V by Maroon 5">
+    <meta property="og:description" content="A detailed review of Maroon 5's album V, released in 2014, on WSLF Radio.">
+    <meta property="og:image" content="https://wslf-radio.neocities.org/WSLF_Transparent.png">
+    <title>Album Review - V by Maroon 5</title>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #252525;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .menu-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #0078d7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .menu-bar img {
+            width: 50px;
+            margin-right: 20px;
+        }
+
+        .menu-items {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            overflow: hidden;
+        }
+
+        .menu-item {
+            margin-right: 15px;
+            cursor: pointer;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 400;
+            padding: 8px 14px;
+            transition: background-color 0.2s ease;
+        }
+
+        .menu-item:hover {
+            background-color: #005ea2;
+        }
+
+        .menu-item i {
+            margin-right: 6px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-toggle {
+            margin-right: 15px;
+            cursor: pointer;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 400;
+            padding: 8px 14px;
+            transition: background-color 0.2s ease;
+        }
+
+        .dropdown-toggle:hover {
+            background-color: #005ea2;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #0078d7;
+            min-width: 200px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-item {
+            color: #fff;
+            padding: 8px 14px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.2s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #005ea2;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 80px auto 30px auto;
+            padding: 20px;
+            background-color: #333;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .blog-banner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #444;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .blog-banner img {
+            width: 80px;
+        }
+
+        .blog-banner h1 {
+            margin: 0;
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: 400;
+        }
+
+        .album-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            background-color: #444;
+            padding: 15px;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .album-cover {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .album-details {
+            flex: 1;
+        }
+
+        .album-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
+        }
+
+        .artist-name {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin: 5px 0;
+        }
+
+        .rating {
+            display: inline-block;
+            font-size: 1.2rem;
+            font-weight: 400;
+            padding: 5px 10px;
+            background-color: #d13438;
+            color: #fff;
+        }
+
+        .rating.neutral {
+            background-color: #ffb900;
+        }
+
+        .rating.positive {
+            background-color: #00cc6a;
+        }
+
+        .thamfndate {
+            font-size: 0.9rem;
+            color: #ccc;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        h3 {
+            text-align: left;
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin: 15px 0;
+            border-left: 4px solid #0078d7;
+            padding-left: 10px;
+        }
+
+        .paragraph {
+            margin: 20px 0;
+            color: #e0e0e0;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .paragraph p {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            margin: 15px 0;
+        }
+
+        .paragraph:nth-child(1) { animation-delay: 0.2s; }
+        .paragraph:nth-child(2) { animation-delay: 0.3s; }
+        .paragraph:nth-child(3) { animation-delay: 0.4s; }
+
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #555;
+            margin: 20px 0;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #0078d7;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-weight: 400;
+            transition: background-color 0.2s ease;
+            text-align: center;
+        }
+
+        .back-button:hover {
+            background-color: #005ea2;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-bar img {
+                width: 40px;
+            }
+
+            .menu-item, .dropdown-toggle {
+                margin-right: 10px;
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+
+            .dropdown-menu {
+                min-width: 180px;
+            }
+
+            .dropdown-item {
+                padding: 6px 12px;
+            }
+
+            .content {
+                margin: 70px 20px 20px 20px;
+                padding: 15px;
+            }
+
+            .blog-banner {
+                padding: 10px;
+            }
+
+            .blog-banner h1 {
+                font-size: 1.5rem;
+            }
+
+            .album-info {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .album-cover {
+                width: 120px;
+                height: 120px;
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .album-title {
+                font-size: 1.8rem;
+            }
+
+            .artist-name {
+                font-size: 1rem;
+            }
+
+            .rating {
+                font-size: 1rem;
+                padding: 4px 8px;
+            }
+
+            .thamfndate {
+                font-size: 0.85rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            .paragraph p {
+                font-size: 1rem;
+            }
+
+            .back-button {
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .menu-item, .dropdown-toggle {
+                margin-right: 8px;
+                font-size: 12px;
+                padding: 5px 10px;
+            }
+
+            .dropdown-menu {
+                min-width: 160px;
+            }
+
+            .dropdown-item {
+                padding: 5px 10px;
+            }
+
+            .content {
+                padding: 10px;
+            }
+
+            .blog-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 8px;
+            }
+
+            .blog-banner img {
+                margin-bottom: 10px;
+            }
+
+            .album-cover {
+                width: 100px;
+                height: 100px;
+            }
+
+            .album-title {
+                font-size: 1.6rem;
+            }
+
+            .artist-name {
+                font-size: 0.9rem;
+            }
+
+            .rating {
+                font-size: 0.9rem;
+                padding: 3px 6px;
+            }
+
+            h3 {
+                font-size: 1.1rem;
+            }
+
+            .paragraph p {
+                font-size: 0.9rem;
+            }
+
+            .back-button {
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-bar">
+        <div style="display: flex; align-items: center;">
+            <img src="https://www.wslfradio.org/WSLF.png" alt="WSLF Logo">
+            <div class="menu-items">
+                <div class="menu-item" onclick="window.location.href='about'"><i class="fa fa-info-circle"></i> About</div>
+                <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org'"><i class="fa fa-music"></i> WSLF</div>
+                <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/kec94'"><i class="fa fa-cloud"></i> KEC94</div>
+                <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wwg41'"><i class="fa fa-cloud"></i> WWG41</div>
+                <div class="menu-item" onclick="window.location.href='https://www.wslfradio.org/wxl87'"><i class="fa fa-cloud"></i> WXL87</div>
+            </div>
+        </div>
+        <div class="dropdown">
+            <div class="dropdown-toggle"><i class="fa fa-bars"></i> More</div>
+            <div class="dropdown-menu" id="dropdown-menu">
+                <div class="dropdown-item static-item" onclick="window.location.href='status'"><i class="fa fa-signal"></i> Stream Status</div>
+                <div class="dropdown-item static-item" onclick="window.location.href='blog'"><i class="fa fa-rss"></i> Blog</div>
+                <div class="dropdown-item static-item" onclick="window.location.href='coming-soon'"><i class="fa fa-clock-o"></i> Coming Soon</div>
+                <div class="dropdown-item static-item" onclick="window.location.href='placeholder'"><i class="fa fa-plus"></i> Placeholder</div>
+            </div>
+        </div>
+    </div>
+
+   
+    <div class="content">
+        <div class="blog-banner">
+            <img src="https://www.wslfradio.org/WSLF.png" alt="WSLF Logo">
+            <h1>Music Reviews</h1>
+        </div>
+
+        <div class="album-info">
+            <img src="https://tse3.mm.bing.net/th?id=OIP.qU4mmZ_R7ERaIpZT4Zx8dgHaHa&w=474&h=474&c=7" alt="V Album Cover" class="album-cover">
+            <div class="album-details">
+                <h2 class="album-title">V</h2>
+                <div class="artist-name">Maroon 5</div>
+                <div class="rating neutral">5/10</div>
+            </div>
+        </div>
+
+        <div class="thamfndate">Released on Sep 2, 2014 | Reviewed on Sep 9, 2014 </div>
+
+        <div class="paragraph">
+            <h3>A Basic Pop Project</h3>
+            <p>What can a young one do on a tuesday at school? Nothing! That's why Jayson Doutree has taken his time to review this album. V was released on September 2, 2014, and it’s clear that this project marks a pivotal moment in the band’s evolution, or even devolution, depending on your taste. Spanning 12 tracks and clocking in at just over 40 minutes, V leans heavily into this radio friendly pop scheme that you year on 100.3 The Peak all the time, extremely different from the funky rock of their debut album Songs About Jane. This project features what I think are gonna be radio hits like Maps and Sugar and Animals, which already seem to be getting popular, I feel as if these songs are gonna be plaguing Albuquerque airwaves in a matter of days.  Maps is one of the best tracks on this project with its cool ass guitar riffs and upbeat tempo, makes it sound like I'm living in SoCal. </p>
+            <p>However, there are a lot of issues I have with this project. V is one of the most basic pop albums to come out of the 2010's so far. Tracks like Animals and Feelings rely heavily on a basic formula, relying on repetitive synth beats and Levine’s basic ass vocals, which lacks the common elements found on earlier projects. The production, while clean and radio ready, often feels like it is missing the organic instrumentation that once had this band rolling in the early 2000's. Songs like It Was Always You attempt to inject some emotional weight, but the extremely polished sound undermines any genuine messages. This is for sure a project that is it is playing it safe, as it seems to be prioritizing commercial success made for corporate companies like starbucks over artistic growth. It’s an album that’s easy to listen to but hard to love deeply, leaving a feeling of missed potential. </p>
+            <hr>
+        </div>
+
+        <div class="paragraph">
+            <h3>Rating</h3>
+            <p>The 5/10 rating on the Doutree Richter scale shows a middle ground perspective on this project. On one hand, the album delivers polished, radio friendly pop that’s easy to listen to and hard to escape from (literally). Songs like Maps and Sugar are effective at This, with beats that stay stuck in your head for a long time. On the other hand, V lacks any sort of creativity that made Maroon 5 stand out years ago. The shift to a more generic pop sound feels like a trade off, sacrificing creativity for radio play. This project is a corporate sounding cash grab which does not shake up the ground that much, or get the club rolling which is why this V gets a 5/10 on the Doutree Richter Scale. </p>
+            <p>The album's commercial success, debuting at #1 on the Billboard 200 with 298,000 units moved in its first week, shows Carti still has a strong fanbase, but the critical divide suggests it may be more of a fan favorite than a universal hit. Carti failed to deliver on this project, which is why I am giving this project a light 4 on the Doutree Richter scale.</p>
+            <hr>
+        </div>
+
+        <div class="track-highlights">
+            <p><strong>Favorite Tracks:</strong> Maps, Sugar, Animals</p>
+            <p><strong>Least Favorite Track:</strong> Feelings</p>
+        </div>
+
+        <div style="text-align: center;">
+            <button class="back-button" onclick="window.location.href='music_reviews'">Back to Reviews</button>
+        </div>
+    </div>
+
+    <script>
+        const menuItemsContainer = document.querySelector('.menu-items');
+        const dropdownMenu = document.querySelector('#dropdown-menu');
+        const menuItems = Array.from(document.querySelectorAll('.menu-item'));
+        const staticDropdownItems = Array.from(document.querySelectorAll('.dropdown-item.static-item'));
+        let movedItems = new Map();
+
+        function adjustMenuForMobile() {
+            const menuBarRect = document.querySelector('.menu-bar').getBoundingClientRect();
+            const dropdownRect = document.querySelector('.dropdown').getBoundingClientRect();
+            const maxVisibleX = menuBarRect.width - dropdownRect.width - 20;
+
+            movedItems.forEach((clone, onclick) => {
+                const originalItem = menuItems.find(item => item.getAttribute('onclick') === onclick);
+                if (originalItem) {
+                    const cloneRect = clone.getBoundingClientRect();
+                    if (cloneRect.right <= maxVisibleX && cloneRect.left >= 0) {
+                        menuItemsContainer.appendChild(originalItem);
+                        clone.remove();
+                        movedItems.delete(onclick);
+                    }
+                }
+            });
+
+            menuItems.forEach(item => {
+                const itemRect = item.getBoundingClientRect();
+                if (itemRect.right > maxVisibleX || itemRect.left < 0) {
+                    const clone = item.cloneNode(true);
+                    clone.classList.add('dropdown-item');
+                    clone.classList.remove('menu-item');
+                    dropdownMenu.appendChild(clone);
+                    movedItems.set(item.getAttribute('onclick'), clone);
+                    item.remove();
+                }
+            });
+        }
+
+        window.addEventListener('load', adjustMenuForMobile);
+        window.addEventListener('resize', adjustMenuForMobile);
+    </script>
+</body>
+</html>
