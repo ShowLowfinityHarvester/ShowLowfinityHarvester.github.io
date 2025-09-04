@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+  <identifier>WSLF-LOCAL-20250903-204500</identifier>
+  <sender>wslf@cap.local</sender>
+  <sent>2025-09-03T20:40:00-07:00</sent>
+  <status>Test</status>
+  <msgType>Alert</msgType>
+  <scope>Public</scope>
+
+  <info>
+    <language>en-US</language>
+    <category>Safety</category>
+    <event>Required Weekly Test</event>
+    <urgency>Immediate</urgency>
+    <severity>Minor</severity>
+    <certainty>Observed</certainty>
+
+    
+    <eventCode>
+      <valueName>SAME</valueName>
+      <value>RWT</value>
+    </eventCode>
+
+    
+    <parameter>
+      <valueName>EAS-ORG</valueName>
+      <value>EAS</value>
+    </parameter>
+
+   
+    <onset>2025-09-03T20:45:00-07:00</onset>
+    <expires>2025-09-03T21:45:00-07:00</expires>
+
+    <senderName>WSLF CAP Server</senderName>
+    <headline>Required Weekly Test for Maricopa County, AZ</headline>
+    <description>
+      This is a Required Weekly Test of the Emergency Alert System for Maricopa County, Arizona.
+      No action is required.
+    </description>
+    <instruction>No action is required.</instruction>
+
+    
+    <resource>
+      <resourceDesc>RWT Audio</resourceDesc>
+      <mimeType>audio/mpeg</mimeType>
+      <uri>https://cdn.discordapp.com/attachments/755573885499342879/1370178182707281990/17_-_Lava_Reef_Zone_Act_2.flac?ex=68ba1e5f&is=68b8ccdf&hm=63412bc23f431efee7d464be8c4ea820729261bc0b403a35e28b5eba1be78f6d&</uri>
+    </resource>
+
+    <area>
+      <areaDesc>Maricopa County, AZ</areaDesc>
+      
+      <geocode>
+        <valueName>SAME</valueName>
+        <value>004013</value>
+      </geocode>
+    </area>
+  </info>
+</alert>
