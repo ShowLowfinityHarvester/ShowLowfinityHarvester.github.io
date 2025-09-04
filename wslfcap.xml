@@ -40,11 +40,11 @@
     <instruction>No action is required.</instruction>
 
     
-    <resource>
-      <resourceDesc>RWT Audio</resourceDesc>
-      <mimeType>audio/mpeg</mimeType>
-      <uri>https://cdn.discordapp.com/attachments/755573885499342879/1370178182707281990/17_-_Lava_Reef_Zone_Act_2.flac?ex=68ba1e5f&is=68b8ccdf&hm=63412bc23f431efee7d464be8c4ea820729261bc0b403a35e28b5eba1be78f6d&</uri>
-    </resource>
+<resource>
+  <resourceDesc>RWT Audio</resourceDesc>
+  <mimeType>audio/flac</mimeType>
+  <uri><![CDATA[https://cdn.discordapp.com/attachments/755573885499342879/1370178182707281990/17_-_Lava_Reef_Zone_Act_2.flac?ex=68ba1e5f&is=68b8ccdf&hm=63412bc23f431efee7d464be8c4ea820729261bc0b403a35e28b5eba1be78f6d]]></uri>
+</resource>
 
     <area>
       <areaDesc>Maricopa County, AZ</areaDesc>
